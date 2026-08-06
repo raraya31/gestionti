@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gestion TI Informatique — Services TI gérés pour PME | Mirabel & Grand Montréal</title>
+<meta name="description" content="Services TI gérés, cybersécurité, Microsoft 365 et automatisation par IA pour les PME du Grand Montréal et des Laurentides. Partenaire Microsoft. Spécialité concessionnaires automobiles." />
+<meta name="theme-color" content="#0a1628" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Gestion TI Informatique — Votre équipe TI, sans les tracas" />
+<meta property="og:description" content="Services gérés, cybersécurité, Microsoft 365 et IA pour les PME du Québec." />
+<meta property="og:locale" content="fr_CA" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --navy:#0a1628;
+    --navy-2:#0d1e38;
+    --ink:#0f172a;
+    --slate:#475569;
+    --slate-2:#64748b;
+    --line:#e6ebf2;
+    --bg:#ffffff;
+    --bg-soft:#f5f8fc;
+    --accent:#0ea5e9;
+    --accent-2:#22d3ee;
+    --accent-deep:#0369a1;
+    --grad:linear-gradient(120deg,#0ea5e9 0%,#22d3ee 100%);
+    --radius:18px;
+    --shadow-sm:0 1px 2px rgba(15,23,42,.06),0 4px 16px rgba(15,23,42,.05);
+    --shadow-md:0 12px 40px rgba(10,22,40,.12);
+    --maxw:1180px;
+    --font:'Plus Jakarta Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    --font-body:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--font-body);
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:var(--font);color:var(--navy);line-height:1.15;letter-spacing:-.02em;font-weight:800}
+  a{color:inherit;text-decoration:none}
+  img,svg{display:block;max-width:100%}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--font);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--accent-deep);background:rgba(14,165,233,.09);
+    padding:7px 14px;border-radius:100px;border:1px solid rgba(14,165,233,.18);
+  }
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    font-family:var(--font);font-weight:700;font-size:15px;
+    padding:14px 26px;border-radius:12px;cursor:pointer;border:none;
+    transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--grad);color:#04121f;box-shadow:0 8px 24px rgba(14,165,233,.35)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(14,165,233,.45)}
+  .btn-ghost{background:transparent;color:var(--navy);border:1.5px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent-deep)}
+  .btn-light{background:#fff;color:var(--navy)}
+  .btn-light:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.18)}
+  .btn-outline-light{background:rgba(255,255,255,.06);color:#fff;border:1.5px solid rgba(255,255,255,.28)}
+  .btn-outline-light:hover{background:rgba(255,255,255,.14)}
+  section{padding:96px 0}
+  .section-head{max-width:720px;margin:0 auto 56px;text-align:center}
+  .section-head h2{font-size:clamp(28px,4vw,42px);margin:16px 0 14px}
+  .section-head p{color:var(--slate);font-size:18px}
+
+  /* ---------- Header ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    transition:background .3s ease,box-shadow .3s ease,padding .3s ease;
+    padding:18px 0;
+  }
+  header.scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line);padding:12px 0}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .logo{display:flex;align-items:center;gap:11px}
+  .logo .mark{width:42px;height:42px;flex:none}
+  /* Default (over dark hero): light text. Flipped to dark when header.scrolled. */
+  .logo .name{font-family:var(--font);font-weight:800;font-size:19px;color:#fff;letter-spacing:-.02em;line-height:1;transition:color .25s}
+  .logo .name small{display:block;font-size:10.5px;font-weight:600;letter-spacing:.18em;color:var(--accent-2);text-transform:uppercase;margin-top:3px;transition:color .25s}
+  .nav-links{display:flex;align-items:center;gap:24px}
+  .nav-links a{font-family:var(--font);font-weight:600;font-size:15px;color:rgba(233,242,251,.88);white-space:nowrap;transition:color .15s}
+  .nav-links a:hover{color:#fff}
+  .nav-cta{display:flex;align-items:center;gap:14px}
+  .nav-phone{font-family:var(--font);font-weight:700;color:#fff;font-size:15px;display:flex;align-items:center;gap:7px;white-space:nowrap;transition:color .25s}
+  .burger{display:none;background:none;border:none;cursor:pointer;padding:8px}
+  .burger span{display:block;width:24px;height:2px;background:#fff;margin:5px 0;border-radius:2px;transition:.25s}
+  /* Scrolled state: white header, dark text */
+  header.scrolled .logo .name{color:var(--navy)}
+  header.scrolled .logo .name small{color:var(--accent-deep)}
+  header.scrolled .nav-links a{color:var(--slate)}
+  header.scrolled .nav-links a:hover{color:var(--accent-deep)}
+  header.scrolled .nav-phone{color:var(--navy)}
+  header.scrolled .burger span{background:var(--navy)}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;padding:150px 0 96px;
+    background:radial-gradient(1100px 500px at 78% -8%,#12294a 0%,var(--navy) 46%,#081120 100%);
+    color:#eaf2fb;overflow:hidden;
+  }
+  .hero::after{content:"";position:absolute;inset:0;background:
+    radial-gradient(600px 300px at 12% 105%,rgba(34,211,238,.14),transparent 60%);pointer-events:none}
+  .hero .grid-lines{position:absolute;inset:0;opacity:.5;
+    background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+    background-size:56px 56px;mask-image:radial-gradient(700px 480px at 70% 10%,#000,transparent 75%)}
+  .hero-inner{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;z-index:2}
+  .hero .eyebrow{color:#7ee0ff;background:rgba(34,211,238,.1);border-color:rgba(34,211,238,.25)}
+  .hero h1{color:#fff;font-size:clamp(34px,5.2vw,58px);line-height:1.05;margin:22px 0 20px}
+  .hero h1 .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero p.lead{font-size:19px;color:#b8c8dc;max-width:560px}
+  .hero .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin:34px 0 28px}
+  .hero .checks{display:flex;flex-wrap:wrap;gap:14px 26px}
+  .hero .checks span{display:flex;align-items:center;gap:9px;font-size:14.5px;color:#cdd9e8;font-weight:500}
+  .hero .checks svg{flex:none;color:var(--accent-2)}
+  /* hero card */
+  .hero-card{
+    background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));
+    border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:28px;
+    backdrop-filter:blur(8px);box-shadow:0 30px 70px rgba(0,0,0,.4)
+  }
+  .hero-card h3{color:#fff;font-size:17px;margin-bottom:4px}
+  .hero-card .sub{color:#93a6bd;font-size:13.5px;margin-bottom:20px}
+  .hcard-row{display:flex;align-items:center;gap:14px;padding:13px 0;border-top:1px solid rgba(255,255,255,.09)}
+  .hcard-row:first-of-type{border-top:none}
+  .hcard-ic{width:40px;height:40px;border-radius:11px;background:rgba(34,211,238,.14);display:flex;align-items:center;justify-content:center;color:var(--accent-2);flex:none}
+  .hcard-row b{color:#fff;font-family:var(--font);font-size:14.5px;display:block}
+  .hcard-row small{color:#8ea2ba;font-size:12.5px}
+  .hcard-row .stat{margin-left:auto;font-family:var(--font);font-weight:800;color:var(--accent-2);font-size:17px}
+
+  /* ---------- Trust bar ---------- */
+  .trust{background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:30px 0}
+  .trust-inner{display:flex;align-items:center;justify-content:center;gap:14px 42px;flex-wrap:wrap}
+  .trust-inner .label{font-family:var(--font);font-weight:700;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--slate-2)}
+  .trust-badge{display:flex;align-items:center;gap:9px;font-family:var(--font);font-weight:700;color:var(--navy);font-size:15px;opacity:.85}
+  .trust-badge svg{color:var(--accent-deep);flex:none}
+
+  /* ---------- Services ---------- */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;
+    box-shadow:var(--shadow-sm);transition:transform .22s ease,box-shadow .22s ease,border-color .22s;
+    position:relative;overflow:hidden;
+  }
+  .card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:rgba(14,165,233,.4)}
+  .card .ic{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,rgba(14,165,233,.12),rgba(34,211,238,.12));display:flex;align-items:center;justify-content:center;color:var(--accent-deep);margin-bottom:18px}
+  .card h3{font-size:19px;margin-bottom:9px}
+  .card p{color:var(--slate);font-size:15px}
+  .card .tag{position:absolute;top:16px;right:16px;font-family:var(--font);font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--accent-deep);background:rgba(14,165,233,.1);padding:4px 10px;border-radius:100px}
+
+  /* ---------- AI band ---------- */
+  .ai{
+    background:radial-gradient(900px 400px at 85% 0%,#123255 0%,var(--navy) 55%,#070f1c 100%);
+    color:#e8f1fb;position:relative;overflow:hidden;
+  }
+  .ai::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(700px 400px at 80% 20%,#000,transparent 70%)}
+  .ai-inner{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;z-index:2}
+  .ai .eyebrow{color:#7ee0ff;background:rgba(34,211,238,.1);border-color:rgba(34,211,238,.25)}
+  .ai h2{color:#fff;font-size:clamp(28px,4vw,40px);margin:16px 0 16px}
+  .ai p.lead{color:#b8c8dc;font-size:18px;margin-bottom:26px}
+  .ai-list{display:grid;gap:16px}
+  .ai-item{display:flex;gap:15px;align-items:flex-start}
+  .ai-item .ic{width:44px;height:44px;border-radius:12px;background:rgba(34,211,238,.13);display:flex;align-items:center;justify-content:center;color:var(--accent-2);flex:none}
+  .ai-item b{color:#fff;font-family:var(--font);font-size:16px;display:block;margin-bottom:2px}
+  .ai-item span{color:#98abc2;font-size:14.5px}
+  .ai-visual{display:grid;gap:16px}
+  .ai-chip{background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.13);border-radius:16px;padding:20px 22px;display:flex;align-items:center;gap:16px}
+  .ai-chip .dot{width:10px;height:10px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 0 5px rgba(34,211,238,.16);flex:none}
+  .ai-chip b{color:#fff;font-family:var(--font);font-size:15px;display:block}
+  .ai-chip small{color:#8ea2ba;font-size:13px}
+  .ai-chip .pct{margin-left:auto;font-family:var(--font);font-weight:800;color:var(--accent-2);font-size:20px}
+
+  /* ---------- Sectors ---------- */
+  .sectors-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .sector{border-radius:var(--radius);padding:34px;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow-sm)}
+  .sector.smb{background:linear-gradient(180deg,#fff,var(--bg-soft))}
+  .sector.dealer{background:radial-gradient(700px 300px at 90% 0,#12294a,#0a1628);color:#e8f1fb;border-color:transparent}
+  .sector h3{font-size:23px;margin:14px 0 12px}
+  .sector.dealer h3{color:#fff}
+  .sector p{color:var(--slate);font-size:15.5px;margin-bottom:18px}
+  .sector.dealer p{color:#b3c3d6}
+  .sector ul{list-style:none;display:grid;gap:10px}
+  .sector li{display:flex;align-items:flex-start;gap:10px;font-size:14.5px;color:var(--ink)}
+  .sector.dealer li{color:#d3ddea}
+  .sector li svg{flex:none;color:var(--accent);margin-top:3px}
+  .sector.dealer li svg{color:var(--accent-2)}
+  .sector .pill{display:inline-flex;align-items:center;gap:7px;font-family:var(--font);font-weight:700;font-size:12px;letter-spacing:.07em;text-transform:uppercase;padding:6px 13px;border-radius:100px}
+  .sector.smb .pill{color:var(--accent-deep);background:rgba(14,165,233,.1)}
+  .sector.dealer .pill{color:#7ee0ff;background:rgba(34,211,238,.12)}
+
+  /* ---------- Process ---------- */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;counter-reset:step}
+  .step{position:relative;padding:28px 22px;border-radius:var(--radius);background:var(--bg-soft);border:1px solid var(--line)}
+  .step .num{font-family:var(--font);font-weight:800;font-size:15px;color:#fff;width:38px;height:38px;border-radius:11px;background:var(--grad);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+  .step h3{font-size:17px;margin-bottom:7px}
+  .step p{color:var(--slate);font-size:14px}
+
+  /* ---------- Stats ---------- */
+  .why{background:var(--bg-soft)}
+  .why-inner{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .why h2{font-size:clamp(28px,4vw,40px);margin:16px 0 18px}
+  .why p{color:var(--slate);font-size:17px;margin-bottom:16px}
+  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .stat-box{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px;text-align:center;box-shadow:var(--shadow-sm)}
+  .stat-box .big{font-family:var(--font);font-weight:800;font-size:38px;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+  .stat-box .lbl{color:var(--slate);font-size:14px;margin-top:8px;font-weight:500}
+
+  /* ---------- Plans ---------- */
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+  .plan{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px 28px;display:flex;flex-direction:column;box-shadow:var(--shadow-sm)}
+  .plan.featured{border:2px solid var(--accent);box-shadow:0 20px 50px rgba(14,165,233,.18);position:relative}
+  .plan.featured .flag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--grad);color:#04121f;font-family:var(--font);font-weight:800;font-size:12px;padding:5px 16px;border-radius:100px;letter-spacing:.03em}
+  .plan h3{font-size:21px;margin-bottom:6px}
+  .plan .desc{color:var(--slate);font-size:14.5px;min-height:44px}
+  .plan .price{font-family:var(--font);font-weight:800;color:var(--navy);font-size:28px;margin:16px 0 4px}
+  .plan .price small{font-size:14px;font-weight:600;color:var(--slate-2)}
+  .plan ul{list-style:none;display:grid;gap:11px;margin:20px 0 26px}
+  .plan li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;color:var(--ink)}
+  .plan li svg{flex:none;color:var(--accent);margin-top:3px}
+  .plan .btn{margin-top:auto;width:100%}
+
+  /* ---------- FAQ ---------- */
+  .faq{max-width:800px;margin:0 auto;display:grid;gap:14px}
+  .faq-item{border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden}
+  .faq-q{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:20px 24px;font-family:var(--font);font-weight:700;font-size:16.5px;color:var(--navy);display:flex;justify-content:space-between;align-items:center;gap:16px}
+  .faq-q .chev{transition:transform .25s;flex:none;color:var(--accent-deep)}
+  .faq-item.open .chev{transform:rotate(180deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+  .faq-a p{padding:0 24px 20px;color:var(--slate);font-size:15px}
+
+  /* ---------- Contact ---------- */
+  .contact{background:radial-gradient(900px 500px at 15% 0,#12294a,var(--navy) 60%,#070f1c);color:#e8f1fb}
+  .contact-inner{display:grid;grid-template-columns:.9fr 1.1fr;gap:52px}
+  .contact h2{color:#fff;font-size:clamp(28px,4vw,40px);margin:16px 0 16px}
+  .contact p.lead{color:#b8c8dc;font-size:17px;margin-bottom:30px}
+  .contact-info{display:grid;gap:18px;margin-bottom:30px}
+  .ci-row{display:flex;align-items:center;gap:15px}
+  .ci-ic{width:46px;height:46px;border-radius:12px;background:rgba(34,211,238,.13);display:flex;align-items:center;justify-content:center;color:var(--accent-2);flex:none}
+  .ci-row b{color:#fff;font-family:var(--font);font-size:15px;display:block}
+  .ci-row span,.ci-row a{color:#a9bcd2;font-size:14.5px}
+  .ci-row a:hover{color:var(--accent-2)}
+  .form-card{background:#fff;border-radius:20px;padding:34px;box-shadow:0 30px 70px rgba(0,0,0,.35)}
+  .form-card h3{font-size:20px;margin-bottom:6px}
+  .form-card .fsub{color:var(--slate);font-size:14.5px;margin-bottom:22px}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-family:var(--font);font-weight:600;font-size:13.5px;color:var(--navy);margin-bottom:7px}
+  .field input,.field textarea,.field select{width:100%;padding:13px 15px;border:1.5px solid var(--line);border-radius:11px;font-family:var(--font-body);font-size:15px;color:var(--ink);background:#fbfcfe;transition:border-color .15s,box-shadow .15s}
+  .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(14,165,233,.14);background:#fff}
+  .field textarea{resize:vertical;min-height:110px}
+  .form-note{font-size:12.5px;color:var(--slate-2);margin-top:12px;text-align:center}
+
+  /* ---------- Footer ---------- */
+  footer{background:#070f1c;color:#9fb0c6;padding:64px 0 30px}
+  .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.08)}
+  .foot-brand .logo .name{color:#fff}
+  .foot-brand p{font-size:14px;margin-top:16px;max-width:290px;color:#8698af}
+  .foot-col h4{color:#fff;font-family:var(--font);font-size:14px;letter-spacing:.04em;margin-bottom:16px}
+  .foot-col a{display:block;font-size:14px;color:#9fb0c6;margin-bottom:11px;transition:color .15s}
+  .foot-col a:hover{color:var(--accent-2)}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding-top:26px;font-size:13px;color:#7d8ea6}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- Responsive ---------- */
+  @media(max-width:1280px){
+    .nav-phone{display:none}
+    .nav-links{gap:20px}
+    .nav-links a{font-size:14.5px}
+  }
+  @media(max-width:960px){
+    .hero-inner,.ai-inner,.why-inner,.contact-inner{grid-template-columns:1fr;gap:40px}
+    .cards,.plans{grid-template-columns:1fr 1fr}
+    .steps{grid-template-columns:1fr 1fr}
+    .sectors-grid{grid-template-columns:1fr}
+    .hero-card{max-width:520px}
+  }
+  @media(max-width:720px){
+    section{padding:70px 0}
+    .nav-links,.nav-phone{display:none}
+    .nav-cta .btn-primary{display:none}
+    .burger{display:block}
+    .nav-links.open{display:flex;position:absolute;top:64px;left:16px;right:16px;flex-direction:column;align-items:flex-start;gap:4px;background:#fff;padding:16px;border-radius:16px;box-shadow:var(--shadow-md);border:1px solid var(--line)}
+    .nav-links.open a{padding:10px 6px;width:100%;color:var(--slate)}
+    .nav-links.open a:hover{color:var(--accent-deep)}
+    .cards,.plans,.steps,.stat-grid{grid-template-columns:1fr}
+    .hero{padding:120px 0 70px}
+    .hero .cta-row .btn{flex:1}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header id="header">
+  <div class="wrap nav">
+    <a href="#top" class="logo" aria-label="Gestion TI Informatique — accueil">
+      <svg class="mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="1.5" y="1.5" width="45" height="45" rx="12" fill="#0a1628"/>
+        <rect x="1.5" y="1.5" width="45" height="45" rx="12" stroke="url(#g1)" stroke-width="1.5"/>
+        <path d="M15 30.5V17.5" stroke="url(#g1)" stroke-width="3.2" stroke-linecap="round"/>
+        <path d="M15 17.5C15 17.5 22 17.5 24 17.5C27.5 17.5 30 19.7 30 23C30 26.3 27.5 28.5 24 28.5H20.5" stroke="url(#g1)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="32.5" cy="16" r="2.2" fill="#22d3ee"/>
+        <path d="M20.5 28.5L26 34" stroke="url(#g1)" stroke-width="3.2" stroke-linecap="round"/>
+        <defs>
+          <linearGradient id="g1" x1="12" y1="14" x2="34" y2="34" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#0ea5e9"/><stop offset="1" stop-color="#22d3ee"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <span class="name">Gestion&nbsp;TI<small>Informatique</small></span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#ia">IA &amp; automatisation</a>
+      <a href="#secteurs">Secteurs</a>
+      <a href="#forfaits">Forfaits</a>
+      <a href="#apropos">À propos</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="nav-cta">
+      <a href="tel:+15147426455" class="nav-phone">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (514) 742-6455
+      </a>
+      <a href="#contact" class="btn btn-primary">Réserver une consultation</a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<span id="top"></span>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="grid-lines"></div>
+  <div class="wrap hero-inner">
+    <div>
+      <span class="eyebrow">Services TI gérés · Mirabel &amp; Grand Montréal</span>
+      <h1>Votre équipe TI,<br><span class="grad">sans les tracas.</span></h1>
+      <p class="lead">Nous gérons, sécurisons et modernisons l'informatique des PME du Québec — support proactif, cybersécurité, Microsoft&nbsp;365 et automatisation par intelligence artificielle. Vous vous concentrez sur votre entreprise, on s'occupe du reste.</p>
+      <div class="cta-row">
+        <a href="#contact" class="btn btn-primary">Réserver une consultation gratuite
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#services" class="btn btn-outline-light">Voir nos services</a>
+      </div>
+      <div class="checks">
+        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Partenaire Microsoft</span>
+        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Support en français, ici au Québec</span>
+        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Temps de réponse garantis</span>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <h3>Un partenaire, tout votre TI</h3>
+      <p class="sub">Une seule équipe pour l'ensemble de vos besoins technologiques.</p>
+      <div class="hcard-row">
+        <div class="hcard-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <div><b>Infrastructure gérée</b><small>Serveurs, réseau, postes de travail</small></div>
+      </div>
+      <div class="hcard-row">
+        <div class="hcard-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg></div>
+        <div><b>Cybersécurité 24/7</b><small>Surveillance et protection continues</small></div>
+      </div>
+      <div class="hcard-row">
+        <div class="hcard-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <div><b>Microsoft 365</b><small>Migration, licences et gestion</small></div>
+      </div>
+      <div class="hcard-row">
+        <div class="hcard-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44A2.5 2.5 0 0 1 3.5 17.5 2.5 2.5 0 0 1 4 12a2.5 2.5 0 0 1-.5-4.5A2.5 2.5 0 0 1 7 4.5 2.5 2.5 0 0 1 9.5 2Z"/></svg></div>
+        <div><b>Automatisation par IA</b><small>Des processus plus rapides</small></div>
+        <div class="stat">24/7</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRUST BAR ================= -->
+<div class="trust">
+  <div class="wrap trust-inner">
+    <span class="label">Nos partenaires technologiques</span>
+    <span class="trust-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M2 2h9.5v9.5H2zM12.5 2H22v9.5h-9.5zM2 12.5h9.5V22H2zM12.5 12.5H22V22h-9.5z"/></svg> Microsoft Partner</span>
+    <span class="trust-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M7 20h10M12 16v4"/></svg> Lenovo</span>
+    <span class="trust-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg> Fortinet</span>
+    <span class="trust-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5l-8-3Z"/></svg> Bitdefender</span>
+    <span class="trust-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z"/><path d="M8 12l3 3 5-6"/></svg> Guardz</span>
+  </div>
+</div>
+
+<!-- ================= SERVICES ================= -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Nos services</span>
+      <h2>Tout votre TI, géré de bout en bout</h2>
+      <p>De l'infrastructure quotidienne à la stratégie technologique, une équipe complète à un coût prévisible.</p>
+    </div>
+    <div class="cards">
+      <div class="card reveal"><span class="tag">Populaire</span>
+        <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <h3>Services gérés &amp; support</h3>
+        <p>Surveillance proactive, mises à jour et centre d'assistance réactif. On règle les problèmes souvent avant que vous les remarquiez.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h3>Cybersécurité &amp; conformité</h3>
+        <p>Protection multicouche, détection des menaces, filtrage, sensibilisation des employés et gestion de la conformité (Loi&nbsp;25).</p>
+      </div>
+      <div class="card reveal"><span class="tag">Microsoft</span>
+        <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg></div>
+        <h3>Microsoft 365 &amp; migrations</h3>
+        <p>Migration vers Office/Microsoft&nbsp;365, gestion des licences, Teams, SharePoint, Exchange et Intune — configurés et sécurisés.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 0 0 .5-9 6 6 0 0 0-11.7-1.6A4 4 0 0 0 6 19Z"/></svg></div>
+        <h3>Infonuagique &amp; Azure</h3>
+        <p>Conception, migration et gestion d'environnements infonuagiques Azure évolutifs, avec optimisation des coûts.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></div>
+        <h3>Sauvegarde &amp; reprise</h3>
+        <p>Sauvegardes automatisées et testées, plan de reprise après sinistre et continuité des activités face aux imprévus.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
+        <h3>Réseau &amp; infrastructure</h3>
+        <p>Conception et maintenance de réseaux filaires et sans-fil fiables, pare-feu, VPN et Wi-Fi haute performance.</p>
+      </div>
+      <div class="card reveal"><span class="tag">IA</span>
+        <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44A2.5 2.5 0 0 1 3.5 17.5 2.5 2.5 0 0 1 4 12a2.5 2.5 0 0 1-.5-4.5A2.5 2.5 0 0 1 7 4.5 2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5"/></svg></div>
+        <h3>IA &amp; automatisation</h3>
+        <p>Agents intelligents et automatisations sur mesure qui éliminent les tâches répétitives et accélèrent vos opérations.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M7 21h10M9 17v4M15 17v4"/></svg></div>
+        <h3>Approvisionnement matériel</h3>
+        <p>Revente et déploiement de matériel Lenovo et de tout l'équipement dont votre PME a besoin — portables, serveurs, postes.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/></svg></div>
+        <h3>Conseil &amp; stratégie TI</h3>
+        <p>Un vCIO qui aligne votre technologie sur vos objectifs d'affaires : feuille de route, budget et planification pluriannuelle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= AI BAND ================= -->
+<section id="ia" class="ai">
+  <div class="wrap ai-inner">
+    <div class="reveal">
+      <span class="eyebrow">La révolution agentique</span>
+      <h2>L'IA au service de votre PME, pas l'inverse</h2>
+      <p class="lead">Nous intégrons l'intelligence artificielle directement dans vos opérations : des agents qui traitent les demandes, automatisent la paperasse et libèrent votre équipe pour ce qui compte vraiment.</p>
+      <div class="ai-list">
+        <div class="ai-item">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M2 14h2M20 14h2M15 13v2M9 13v2"/></svg></div>
+          <div><b>Automatisation intelligente</b><span>Des flux de travail qui s'exécutent seuls, 24&nbsp;heures sur 24.</span></div>
+        </div>
+        <div class="ai-item">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div>
+          <div><b>Décisions augmentées</b><span>Analysez vos données et repérez les tendances en temps réel.</span></div>
+        </div>
+        <div class="ai-item">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg></div>
+          <div><b>Productivité accrue</b><span>Moins de tâches manuelles, plus de temps à valeur ajoutée.</span></div>
+        </div>
+        <div class="ai-item">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-4 12.7V17a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 22h6"/></svg></div>
+          <div><b>Adoption responsable</b><span>Une IA déployée de façon sécuritaire et conforme à vos données.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="ai-visual reveal">
+      <div class="ai-chip"><span class="dot"></span><div><b>Tickets traités automatiquement</b><small>Tri, réponse et routage par agent IA</small></div><span class="pct">−60&nbsp;%</span></div>
+      <div class="ai-chip"><span class="dot"></span><div><b>Temps de traitement des demandes</b><small>Automatisation des tâches répétitives</small></div><span class="pct">3×</span></div>
+      <div class="ai-chip"><span class="dot"></span><div><b>Disponibilité des automatisations</b><small>Sans interruption, jour et nuit</small></div><span class="pct">24/7</span></div>
+      <div class="ai-chip"><span class="dot"></span><div><b>Rapports générés sur demande</b><small>Données consolidées en un clin d'œil</small></div><span class="pct">Instantané</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTORS ================= -->
+<section id="secteurs">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Pour qui</span>
+      <h2>Des PME de tous les secteurs — et une spécialité automobile</h2>
+      <p>Nous servons les petites et moyennes entreprises du Grand Montréal et des Laurentides, avec une expertise reconnue auprès des concessionnaires.</p>
+    </div>
+    <div class="sectors-grid">
+      <div class="sector smb reveal">
+        <span class="pill">Toutes les PME</span>
+        <h3>Petites et moyennes entreprises</h3>
+        <p>Bureaux professionnels, commerces, manufacturiers, services — si votre entreprise dépend de sa technologie, nous la gardons fiable, sécuritaire et à jour.</p>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Support TI complet à coût prévisible</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Migration et gestion Microsoft&nbsp;365</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Cybersécurité et conformité à la Loi&nbsp;25</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Approvisionnement en matériel et logiciels</li>
+        </ul>
+      </div>
+      <div class="sector dealer reveal">
+        <span class="pill">Notre spécialité</span>
+        <h3>Concessionnaires automobiles</h3>
+        <p>Nous connaissons vos systèmes DMS, vos équipes réparties entre la vente, le service et les pièces, et votre tolérance zéro pour les pannes. Un partenaire qui arrive préparé.</p>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Soutien des systèmes DMS (Reynolds, CDK, PBS…)</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Réseau haute disponibilité, plancher et atelier</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Support prioritaire avec temps de réponse garantis</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Gestion multi-sites depuis un tableau de bord unifié</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section id="processus" style="background:var(--bg-soft)">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Comment ça marche</span>
+      <h2>Un démarrage simple, sans surprise</h2>
+      <p>De la première conversation à un TI qui tourne tout seul, en quatre étapes.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="num">1</div><h3>Consultation gratuite</h3><p>On discute de vos besoins et de vos irritants actuels — sans engagement.</p></div>
+      <div class="step reveal"><div class="num">2</div><h3>Évaluation</h3><p>Nous analysons votre infrastructure, votre sécurité et vos risques.</p></div>
+      <div class="step reveal"><div class="num">3</div><h3>Plan sur mesure</h3><p>Une feuille de route claire avec priorités, échéancier et coûts prévisibles.</p></div>
+      <div class="step reveal"><div class="num">4</div><h3>Gestion continue</h3><p>On surveille, on sécurise et on optimise pendant que vous travaillez.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY / STATS ================= -->
+<section id="apropos" class="why">
+  <div class="wrap why-inner">
+    <div class="reveal">
+      <span class="eyebrow">Pourquoi Gestion TI Informatique</span>
+      <h2>Un partenaire local qui parle votre langue</h2>
+      <p>Basés à Mirabel, nous accompagnons les PME du Grand Montréal et des Laurentides avec un service humain, en français, et une véritable expertise technique.</p>
+      <p>Nos clients ne veulent pas gérer leur informatique — ils veulent faire croître leur entreprise. Notre rôle est de faire en sorte que la technologie fonctionne en arrière-plan, sans interruption et sans surprise.</p>
+      <a href="#contact" class="btn btn-primary" style="margin-top:12px">Discutons de votre entreprise</a>
+    </div>
+    <div class="stat-grid reveal">
+      <div class="stat-box"><div class="big">&lt;&nbsp;1&nbsp;h</div><div class="lbl">Temps de réponse cible</div></div>
+      <div class="stat-box"><div class="big">99,9&nbsp;%</div><div class="lbl">Disponibilité visée (SLA)</div></div>
+      <div class="stat-box"><div class="big">24/7</div><div class="lbl">Surveillance de sécurité</div></div>
+      <div class="stat-box"><div class="big">100&nbsp;%</div><div class="lbl">Service en français</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PLANS ================= -->
+<section id="forfaits">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Forfaits</span>
+      <h2>Des formules adaptées à votre taille</h2>
+      <p>Un coût mensuel prévisible, sans mauvaise surprise. Nous bâtissons chaque forfait sur mesure après une évaluation.</p>
+    </div>
+    <div class="plans">
+      <div class="plan reveal">
+        <h3>Essentiel</h3>
+        <p class="desc">Pour les petites équipes qui veulent un TI fiable et sécurisé.</p>
+        <div class="price">Sur mesure</div>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Support &amp; centre d'assistance</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Surveillance proactive</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Antivirus &amp; mises à jour gérées</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Gestion Microsoft&nbsp;365</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost">Obtenir une soumission</a>
+      </div>
+      <div class="plan featured reveal">
+        <span class="flag">Le plus populaire</span>
+        <h3>Croissance</h3>
+        <p class="desc">Le forfait complet pour les PME qui veulent tout déléguer.</p>
+        <div class="price">Sur mesure</div>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Tout le forfait Essentiel</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Cybersécurité avancée &amp; Loi&nbsp;25</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Sauvegarde &amp; reprise après sinistre</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Conseil stratégique (vCIO)</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary">Réserver une consultation</a>
+      </div>
+      <div class="plan reveal">
+        <h3>Sur mesure &amp; IA</h3>
+        <p class="desc">Pour les organisations qui veulent automatiser et innover.</p>
+        <div class="price">Sur mesure</div>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Tout le forfait Croissance</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Automatisations &amp; agents IA</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Environnements Azure sur mesure</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Gestion multi-sites &amp; DMS</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost">Obtenir une soumission</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq" style="background:var(--bg-soft)">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Questions fréquentes</span>
+      <h2>Ce que les entreprises nous demandent</h2>
+    </div>
+    <div class="faq">
+      <div class="faq-item reveal">
+        <button class="faq-q">Desservez-vous seulement les concessionnaires automobiles ?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="faq-a"><p>Non. Nous accompagnons les PME de tous les secteurs dans le Grand Montréal et les Laurentides. Les concessionnaires sont une spécialité pour laquelle nous avons une expertise approfondie, mais la majorité de nos services conviennent à n'importe quelle entreprise.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Combien coûtent vos services gérés ?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="faq-a"><p>Nos forfaits sont facturés à un tarif mensuel prévisible, établi selon le nombre d'utilisateurs et d'appareils ainsi que vos besoins. Après une courte évaluation gratuite, nous vous remettons une soumission claire et sans engagement.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Pouvez-vous migrer notre courriel vers Microsoft&nbsp;365 ?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="faq-a"><p>Absolument. À titre de partenaire Microsoft, nous gérons la migration complète vers Microsoft&nbsp;365 (courriel, fichiers, Teams, SharePoint), la configuration sécurisée et la gestion continue de vos licences — sans temps d'arrêt pour vos équipes.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Fournissez-vous aussi le matériel informatique ?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="faq-a"><p>Oui. Nous revendons et déployons du matériel Lenovo ainsi que l'ensemble de l'équipement dont une PME a besoin : ordinateurs portables, postes de travail, serveurs et périphériques, livrés configurés et prêts à l'emploi.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Où êtes-vous situés et en quelle langue offrez-vous le service ?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="faq-a"><p>Nous sommes établis à Mirabel et desservons le Grand Montréal et les Laurentides, sur place comme à distance. Tout notre service est offert en français.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="contact">
+  <div class="wrap contact-inner">
+    <div class="reveal">
+      <span class="eyebrow">Contact</span>
+      <h2>Parlons de votre entreprise</h2>
+      <p class="lead">Réservez une consultation gratuite. Nous évaluons votre infrastructure et vous proposons un plan clair, sans engagement.</p>
+      <div class="contact-info">
+        <div class="ci-row">
+          <div class="ci-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><b>Téléphone</b><a href="tel:+15147426455">(514) 742-6455</a></div>
+        </div>
+        <div class="ci-row">
+          <div class="ci-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg></div>
+          <div><b>Courriel</b><a href="mailto:info@gestionti.info">info@gestionti.info</a></div>
+        </div>
+        <div class="ci-row">
+          <div class="ci-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><b>Bureau</b><span>12074 Levis, Mirabel, QC&nbsp;J5J&nbsp;0A5</span></div>
+        </div>
+      </div>
+      <a href="REMPLACER_PAR_VOTRE_LIEN_BOOKINGS" class="btn btn-light" id="bookingBtn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Choisir une plage horaire en ligne
+      </a>
+    </div>
+
+    <div class="form-card reveal">
+      <h3>Demander une consultation gratuite</h3>
+      <p class="fsub">Remplissez le formulaire — nous vous répondons rapidement, en français.</p>
+      <!-- Pour activer l'envoi : créez un formulaire gratuit sur https://formspree.io et
+           remplacez VOTRE_ID_FORMSPREE ci-dessous par votre identifiant. -->
+      <form action="https://formspree.io/f/VOTRE_ID_FORMSPREE" method="POST">
+        <div class="field">
+          <label for="nom">Nom complet</label>
+          <input type="text" id="nom" name="nom" placeholder="Votre nom" required />
+        </div>
+        <div class="field">
+          <label for="email">Adresse courriel</label>
+          <input type="email" id="email" name="email" placeholder="vous@entreprise.com" required />
+        </div>
+        <div class="field">
+          <label for="entreprise">Nom de l'entreprise</label>
+          <input type="text" id="entreprise" name="entreprise" placeholder="Votre entreprise" />
+        </div>
+        <div class="field">
+          <label for="besoin">Comment pouvons-nous aider ?</label>
+          <select id="besoin" name="besoin">
+            <option>Services TI gérés / support</option>
+            <option>Cybersécurité</option>
+            <option>Migration Microsoft 365</option>
+            <option>Automatisation / IA</option>
+            <option>Concessionnaire automobile</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Décrivez brièvement votre besoin…"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%">Envoyer ma demande</button>
+        <p class="form-note">Réponse rapide · Consultation sans engagement · Service en français</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="logo">
+          <svg class="mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="1.5" y="1.5" width="45" height="45" rx="12" fill="#0d1e38"/>
+            <rect x="1.5" y="1.5" width="45" height="45" rx="12" stroke="url(#g2)" stroke-width="1.5"/>
+            <path d="M15 30.5V17.5" stroke="url(#g2)" stroke-width="3.2" stroke-linecap="round"/>
+            <path d="M15 17.5C15 17.5 22 17.5 24 17.5C27.5 17.5 30 19.7 30 23C30 26.3 27.5 28.5 24 28.5H20.5" stroke="url(#g2)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <circle cx="32.5" cy="16" r="2.2" fill="#22d3ee"/>
+            <path d="M20.5 28.5L26 34" stroke="url(#g2)" stroke-width="3.2" stroke-linecap="round"/>
+            <defs><linearGradient id="g2" x1="12" y1="14" x2="34" y2="34" gradientUnits="userSpaceOnUse"><stop stop-color="#0ea5e9"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs>
+          </svg>
+          <span class="name">Gestion&nbsp;TI<small>Informatique</small></span>
+        </div>
+        <p>Votre partenaire de confiance en services TI gérés, cybersécurité et automatisation pour les PME du Grand Montréal et des Laurentides.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Services</h4>
+        <a href="#services">Services gérés</a>
+        <a href="#services">Cybersécurité</a>
+        <a href="#services">Microsoft 365</a>
+        <a href="#ia">IA &amp; automatisation</a>
+      </div>
+      <div class="foot-col">
+        <h4>Entreprise</h4>
+        <a href="#apropos">À propos</a>
+        <a href="#secteurs">Secteurs</a>
+        <a href="#forfaits">Forfaits</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="foot-col">
+        <h4>Nous joindre</h4>
+        <a href="tel:+15147426455">(514) 742-6455</a>
+        <a href="mailto:info@gestionti.info">info@gestionti.info</a>
+        <a href="#contact">12074 Levis, Mirabel, QC</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Gestion TI Informatique. Tous droits réservés.</span>
+      <span>Mirabel, Québec · Service en français</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Header scroll state
+  const header=document.getElementById('header');
+  const onScroll=()=>header.classList.toggle('scrolled',window.scrollY>20);
+  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+
+  // Mobile menu
+  const burger=document.getElementById('burger');
+  const navLinks=document.getElementById('navLinks');
+  burger.addEventListener('click',()=>navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    const q=item.querySelector('.faq-q');
+    const a=item.querySelector('.faq-a');
+    q.addEventListener('click',()=>{
+      const isOpen=item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(o=>{o.classList.remove('open');o.querySelector('.faq-a').style.maxHeight=null;});
+      if(!isOpen){item.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';}
+    });
+  });
+
+  // Reveal on scroll (with safety fallbacks so content is never stuck hidden)
+  const reveals=document.querySelectorAll('.reveal');
+  const showAll=()=>reveals.forEach(el=>el.classList.add('in'));
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+    reveals.forEach(el=>io.observe(el));
+    // Fallback: guarantee everything is visible shortly after load no matter what
+    window.addEventListener('load',()=>setTimeout(showAll,1800));
+  } else { showAll(); }
+
+  // Guard: if booking link not configured, scroll to form instead
+  const bookingBtn=document.getElementById('bookingBtn');
+  if(bookingBtn && bookingBtn.getAttribute('href').startsWith('REMPLACER')){
+    bookingBtn.addEventListener('click',(e)=>{e.preventDefault();document.querySelector('.form-card').scrollIntoView({behavior:'smooth'});});
+  }
+</script>
+</body>
+</html>
