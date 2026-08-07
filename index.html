@@ -256,8 +256,17 @@
   .form-card::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--accent),var(--accent-2))}
   .form-card h3{font-size:20px;margin-bottom:6px}
   .form-card .fsub{color:var(--slate);font-size:14.5px;margin-bottom:18px}
-  .ms-embed{background:#eef4fb;border:1px solid var(--line);border-radius:16px;padding:7px;box-shadow:inset 0 2px 12px rgba(10,22,40,.06)}
-  .ms-embed iframe{display:block;border:none;width:100%;border-radius:11px;background:transparent}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .field .req{color:var(--accent-deep)}
+  .lead-form button[type=submit]{width:100%;margin-top:4px}
+  .lead-form button[type=submit][disabled]{opacity:.65;cursor:progress}
+  .form-status{margin-top:14px;padding:13px 15px;border-radius:11px;font-size:14px;font-weight:600;display:none}
+  .form-status.ok{display:block;background:rgba(16,185,129,.12);color:#047857;border:1px solid rgba(16,185,129,.3)}
+  .form-status.err{display:block;background:rgba(239,68,68,.1);color:#b91c1c;border:1px solid rgba(239,68,68,.28)}
+  .form-ok-wrap{display:none;text-align:center;padding:26px 8px}
+  .form-ok-wrap .ok-ic{width:60px;height:60px;border-radius:50%;background:rgba(16,185,129,.14);color:#059669;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+  .form-ok-wrap h4{font-size:19px;color:var(--navy);margin-bottom:8px}
+  .form-ok-wrap p{color:var(--slate);font-size:14.5px}
   .field{margin-bottom:16px}
   .field label{display:block;font-family:var(--font);font-weight:600;font-size:13.5px;color:var(--navy);margin-bottom:7px}
   .field input,.field textarea,.field select{width:100%;padding:13px 15px;border:1.5px solid var(--line);border-radius:11px;font-family:var(--font-body);font-size:15px;color:var(--ink);background:#fbfcfe;transition:border-color .15s,box-shadow .15s}
@@ -685,13 +694,41 @@
     <div class="form-card reveal">
       <h3>Demander une consultation gratuite</h3>
       <p class="fsub">Remplissez le formulaire — nous vous répondons rapidement, en français.</p>
-      <!-- Formulaire Microsoft Forms (données dans le tenant M365 de Gestion TI). Réponses anonymes autorisées. -->
-      <div class="ms-embed">
-        <iframe title="Formulaire de demande de consultation gratuite"
-          src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=mJ9n4gVZAkeR-8vqc9FTsF0UbxjnDgdEsjaseNYdyRRUMlVMS0dWTVI4V1JFSEhWVlBFTUMwMlA0TS4u&amp;embed=true"
-          width="100%" height="700" frameborder="0" marginwidth="0" marginheight="0"
-          allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen>
-        </iframe>
+      <form class="lead-form" id="leadForm" action="https://formspree.io/f/xaewqynn" method="POST" novalidate>
+        <div class="frow">
+          <div class="field">
+            <label for="lf-name">Nom complet <span class="req">*</span></label>
+            <input id="lf-name" name="nom" type="text" required autocomplete="name" placeholder="Jean Tremblay">
+          </div>
+          <div class="field">
+            <label for="lf-phone">Téléphone</label>
+            <input id="lf-phone" name="telephone" type="tel" autocomplete="tel" placeholder="(514) 000-0000">
+          </div>
+        </div>
+        <div class="field">
+          <label for="lf-email">Adresse courriel <span class="req">*</span></label>
+          <input id="lf-email" name="email" type="email" required autocomplete="email" placeholder="jean@entreprise.com">
+        </div>
+        <div class="field">
+          <label for="lf-company">Nom de l'entreprise</label>
+          <input id="lf-company" name="entreprise" type="text" autocomplete="organization" placeholder="Votre entreprise">
+        </div>
+        <div class="field">
+          <label for="lf-msg">Comment pouvons-nous aider ? <span class="req">*</span></label>
+          <textarea id="lf-msg" name="message" required placeholder="Décrivez brièvement votre besoin (support, cybersécurité, infonuagique, projet…)"></textarea>
+        </div>
+        <input type="hidden" name="_subject" value="Nouvelle demande de consultation — gestionti.info">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+        <button type="submit" class="btn btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+          Envoyer ma demande
+        </button>
+        <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+      </form>
+      <div class="form-ok-wrap" id="formOk">
+        <div class="ok-ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h4>Merci ! Votre demande est envoyée.</h4>
+        <p>Nous vous répondons rapidement, en français — habituellement sous un jour ouvrable.</p>
       </div>
       <p class="form-note">Réponse rapide · Consultation sans engagement · Service en français</p>
     </div>
@@ -784,6 +821,39 @@
   const bookingBtn=document.getElementById('bookingBtn');
   if(bookingBtn && bookingBtn.getAttribute('href').startsWith('REMPLACER')){
     bookingBtn.addEventListener('click',(e)=>{e.preventDefault();document.querySelector('.form-card').scrollIntoView({behavior:'smooth'});});
+  }
+  // Contact form: AJAX submit to Formspree (no page reload)
+  const leadForm=document.getElementById('leadForm');
+  if(leadForm){
+    const statusEl=document.getElementById('formStatus');
+    const okWrap=document.getElementById('formOk');
+    const btn=leadForm.querySelector('button[type=submit]');
+    const btnHTML=btn.innerHTML;
+    leadForm.addEventListener('submit',async(e)=>{
+      e.preventDefault();
+      statusEl.className='form-status';statusEl.textContent='';
+      if(!leadForm.checkValidity()){leadForm.reportValidity();return;}
+      const action=leadForm.getAttribute('action');
+      btn.disabled=true;btn.innerHTML='Envoi en cours…';
+      try{
+        const res=await fetch(action,{method:'POST',body:new FormData(leadForm),headers:{'Accept':'application/json'}});
+        if(res.ok){
+          leadForm.style.display='none';
+          okWrap.style.display='block';
+          okWrap.scrollIntoView({behavior:'smooth',block:'center'});
+          leadForm.reset();
+        }else{
+          const data=await res.json().catch(()=>({}));
+          statusEl.className='form-status err';
+          statusEl.textContent=(data.errors&&data.errors[0]&&data.errors[0].message)?data.errors[0].message:"Une erreur est survenue. Réessayez ou écrivez-nous à info@gestionti.info.";
+          btn.disabled=false;btn.innerHTML=btnHTML;
+        }
+      }catch(err){
+        statusEl.className='form-status err';
+        statusEl.textContent="Connexion impossible. Réessayez ou écrivez-nous à info@gestionti.info.";
+        btn.disabled=false;btn.innerHTML=btnHTML;
+      }
+    });
   }
 </script>
 </body>
