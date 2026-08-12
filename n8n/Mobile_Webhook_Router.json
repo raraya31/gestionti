@@ -1,0 +1,434 @@
+{
+  "name": "Mobile Webhook Router",
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "description": "Voice-to-text mobile command router: a POST webhook feeds Claude 3.5 Sonnet, which routes intent to MODIFY_WORKFLOW (n8n REST API), GENERATE_SCRIPT (write .ps1/.py to disk), or EXECUTE_API (HaloPSA / Microsoft Graph), then returns an execution summary."
+  },
+  "tags": [],
+  "pinData": {},
+  "nodes": [
+    {
+      "id": "0df6829b-5f21-4668-aa83-8d70c39869ae",
+      "name": "Mobile Voice Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [-120, 600],
+      "webhookId": "9e406b5f-5970-44dc-8b9a-21f9d8ede16b",
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "mobile-router",
+        "responseMode": "responseNode",
+        "options": {}
+      }
+    },
+    {
+      "id": "69d18141-c0a4-4da3-8055-a1a5f9fde05d",
+      "name": "Normalize Input",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [100, 600],
+      "parameters": {
+        "mode": "manual",
+        "includeOtherFields": false,
+        "assignments": {
+          "assignments": [
+            { "id": "a1", "name": "command", "value": "={{ $json.body?.command ?? $json.command ?? \"\" }}", "type": "string" },
+            { "id": "a2", "name": "source", "value": "={{ $json.body?.source ?? $json.source ?? \"mobile_voice\" }}", "type": "string" }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "84ea8469-5b88-461a-848f-33de35f9df9b",
+      "name": "Build Router Prompt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [320, 600],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "const SYSTEM_PROMPT = \"You are the intent router for Gestion TI Informatique, a solo MSP automation hub built on n8n, HaloPSA, N-central and Microsoft Graph. You receive a natural-language command transcribed from a phone (voice-to-text). Classify it into EXACTLY ONE of three actions and reply with ONLY a compact minified JSON object: no markdown, no code fences, no prose. Action schemas: (1) MODIFY_WORKFLOW to change an existing n8n workflow, fields {\\\"action\\\":\\\"MODIFY_WORKFLOW\\\",\\\"reasoning\\\":string,\\\"workflow_id\\\":string,\\\"modification_instructions\\\":string}. (2) GENERATE_SCRIPT to author a new automation script, fields {\\\"action\\\":\\\"GENERATE_SCRIPT\\\",\\\"reasoning\\\":string,\\\"script_language\\\":\\\"powershell\\\" or \\\"python\\\",\\\"script_filename\\\":string,\\\"script_content\\\":string}; script_content MUST be the full runnable script; use a .ps1 extension for PowerShell and .py for Python. (3) EXECUTE_API to call HaloPSA or Microsoft Graph, fields {\\\"action\\\":\\\"EXECUTE_API\\\",\\\"reasoning\\\":string,\\\"target_system\\\":\\\"halopsa\\\" or \\\"msgraph\\\",\\\"http_method\\\":\\\"GET\\\" or \\\"POST\\\" or \\\"PATCH\\\" or \\\"PUT\\\" or \\\"DELETE\\\",\\\"endpoint\\\":string absolute URL,\\\"payload\\\":object}. Rules: pick the single best action; always include action and reasoning; include ONLY the fields for the chosen action; endpoint must be an absolute https URL; return valid minified JSON and nothing else. If unsure, choose GENERATE_SCRIPT.\";\nconst out = [];\nfor (const item of $input.all()) {\n  const command = String(item.json.command || \"\");\n  out.push({ json: { command: command, source: item.json.source || \"mobile_voice\", anthropicBody: { model: \"claude-3-5-sonnet-20241022\", max_tokens: 1500, system: SYSTEM_PROMPT, messages: [ { role: \"user\", content: command } ] } } });\n}\nreturn out;"
+      }
+    },
+    {
+      "id": "af6e4a39-6f89-4d48-b8ae-6ae858be0bb3",
+      "name": "Claude Router (Parse Intent)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [540, 600],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.anthropic.com/v1/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "specifyHeaders": "keypair",
+        "headerParameters": { "parameters": [ { "name": "anthropic-version", "value": "2023-06-01" }, { "name": "content-type", "value": "application/json" } ] },
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.anthropicBody) }}",
+        "options": {}
+      },
+      "credentials": {
+        "httpHeaderAuth": { "id": "ZlSbBLrOrNxGENjr", "name": "Anthropic API (x-api-key)" }
+      }
+    },
+    {
+      "id": "256f202c-3db9-4c73-9976-17902d8a3fd0",
+      "name": "Extract Intent",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [760, 600],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const raw = (item.json.content && item.json.content[0] && item.json.content[0].text) || \"{}\";\n  let c = String(raw).trim().split(\"```json\").join(\"\").split(\"```\").join(\"\").trim();\n  let intent;\n  try { intent = JSON.parse(c); } catch (e) { intent = { action: \"UNKNOWN\", reasoning: \"Could not parse Claude output\", raw: c }; }\n  out.push({ json: intent });\n}\nreturn out;"
+      }
+    },
+    {
+      "id": "56c9bfe3-4d98-49a0-915f-66df9c23e341",
+      "name": "Route Action",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [980, 600],
+      "parameters": {
+        "mode": "rules",
+        "rules": {
+          "values": [
+            { "conditions": { "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "strict" }, "conditions": [ { "leftValue": "={{ $json.action }}", "operator": { "type": "string", "operation": "equals" }, "rightValue": "MODIFY_WORKFLOW" } ], "combinator": "and" }, "renameOutput": true, "outputKey": "MODIFY_WORKFLOW" },
+            { "conditions": { "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "strict" }, "conditions": [ { "leftValue": "={{ $json.action }}", "operator": { "type": "string", "operation": "equals" }, "rightValue": "GENERATE_SCRIPT" } ], "combinator": "and" }, "renameOutput": true, "outputKey": "GENERATE_SCRIPT" },
+            { "conditions": { "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "strict" }, "conditions": [ { "leftValue": "={{ $json.action }}", "operator": { "type": "string", "operation": "equals" }, "rightValue": "EXECUTE_API" } ], "combinator": "and" }, "renameOutput": true, "outputKey": "EXECUTE_API" }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "06e9e250-379f-457e-8928-8db19378d147",
+      "name": "n8n Get Workflow",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [1220, 180],
+      "parameters": {
+        "method": "GET",
+        "url": "={{ ($env.N8N_API_BASE_URL || \"http://localhost:5678\") + \"/api/v1/workflows/\" + $json.workflow_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "credentials": {
+        "httpHeaderAuth": { "id": "REPLACE_WITH_N8N_API_CREDENTIAL", "name": "n8n REST API (X-N8N-API-KEY)" }
+      }
+    },
+    {
+      "id": "08da6e9d-9956-490d-870d-a4c18b532c3f",
+      "name": "Prepare Modify Prompt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1420, 180],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "const SYSTEM_MODIFY = \"You are an n8n workflow engineer. You receive the current workflow JSON and modification instructions. Return ONLY the complete updated workflow JSON object (same object with the requested changes applied). Preserve id, name and structural integrity, keep node connections valid, and output minified JSON only with no markdown and no code fences.\";\nconst intent = $(\"Extract Intent\").first().json;\nconst out = [];\nfor (const item of $input.all()) {\n  const current = item.json;\n  const userMsg = \"Modification instructions: \" + (intent.modification_instructions || \"\") + \" . Current workflow JSON: \" + JSON.stringify(current);\n  out.push({ json: { workflow_id: intent.workflow_id, anthropicBody: { model: \"claude-3-5-sonnet-20241022\", max_tokens: 4096, system: SYSTEM_MODIFY, messages: [ { role: \"user\", content: userMsg } ] } } });\n}\nreturn out;"
+      }
+    },
+    {
+      "id": "f8dda13d-59ce-4cc3-95e7-77ff92b37266",
+      "name": "Claude Modify Workflow",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [1620, 180],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.anthropic.com/v1/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "specifyHeaders": "keypair",
+        "headerParameters": { "parameters": [ { "name": "anthropic-version", "value": "2023-06-01" }, { "name": "content-type", "value": "application/json" } ] },
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.anthropicBody) }}",
+        "options": {}
+      },
+      "credentials": {
+        "httpHeaderAuth": { "id": "ZlSbBLrOrNxGENjr", "name": "Anthropic API (x-api-key)" }
+      }
+    },
+    {
+      "id": "40e6ce31-c521-4726-a5ef-3585d29bc799",
+      "name": "Extract Updated Workflow",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1820, 180],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "const wfId = $(\"Prepare Modify Prompt\").first().json.workflow_id;\nconst out = [];\nfor (const item of $input.all()) {\n  const raw = (item.json.content && item.json.content[0] && item.json.content[0].text) || \"{}\";\n  let c = String(raw).trim().split(\"```json\").join(\"\").split(\"```\").join(\"\").trim();\n  let wf;\n  try { wf = JSON.parse(c); } catch (e) { throw new Error(\"Claude did not return valid workflow JSON: \" + c.slice(0, 200)); }\n  const putBody = { name: wf.name, nodes: wf.nodes, connections: wf.connections, settings: wf.settings || {} };\n  out.push({ json: { workflow_id: wfId, putBody: putBody } });\n}\nreturn out;"
+      }
+    },
+    {
+      "id": "62490cbe-4fef-4dd5-b5e1-38e6d1f20f30",
+      "name": "n8n Update Workflow",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [2020, 180],
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ ($env.N8N_API_BASE_URL || \"http://localhost:5678\") + \"/api/v1/workflows/\" + $json.workflow_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "specifyHeaders": "keypair",
+        "headerParameters": { "parameters": [ { "name": "content-type", "value": "application/json" } ] },
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.putBody) }}",
+        "options": {}
+      },
+      "credentials": {
+        "httpHeaderAuth": { "id": "REPLACE_WITH_N8N_API_CREDENTIAL", "name": "n8n REST API (X-N8N-API-KEY)" }
+      }
+    },
+    {
+      "id": "c1400dbc-a7a8-4f8d-b612-b8cc050f1ea0",
+      "name": "Summary - Modify",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [2220, 180],
+      "parameters": {
+        "mode": "manual",
+        "includeOtherFields": false,
+        "assignments": {
+          "assignments": [
+            { "id": "m1", "name": "action", "value": "MODIFY_WORKFLOW", "type": "string" },
+            { "id": "m2", "name": "summary", "value": "={{ 'Workflow ' + $('Extract Updated Workflow').item.json.workflow_id + ' updated via Claude. ' + ($('Extract Intent').item.json.reasoning || '') }}", "type": "string" }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "015c4133-bc6a-4d75-a127-e7a68df50db7",
+      "name": "Respond - Modify",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [2420, 180],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { \"status\": \"ok\", \"action\": $json.action, \"summary\": $json.summary, \"timestamp\": $now.toISO() } }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "bb3ba6b5-c535-40d3-8c8e-7ab06f8fa8d2",
+      "name": "Script to Binary",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [1220, 560],
+      "parameters": {
+        "operation": "toText",
+        "sourceProperty": "script_content",
+        "binaryPropertyName": "data",
+        "options": { "fileName": "={{ $json.script_filename }}", "dataIsBase64": false, "encoding": "utf8" }
+      }
+    },
+    {
+      "id": "660e807a-4f56-4365-bc54-c87c47410fba",
+      "name": "Save Script to Disk",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [1420, 560],
+      "parameters": {
+        "operation": "write",
+        "fileName": "={{ '/claude-workspace/scripts/' + $('Extract Intent').item.json.script_filename }}",
+        "dataPropertyName": "data",
+        "options": {}
+      }
+    },
+    {
+      "id": "da5e28a0-971e-4e7f-8528-1659b32cc35c",
+      "name": "Summary - Script",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [1620, 560],
+      "parameters": {
+        "mode": "manual",
+        "includeOtherFields": false,
+        "assignments": {
+          "assignments": [
+            { "id": "s1", "name": "action", "value": "GENERATE_SCRIPT", "type": "string" },
+            { "id": "s2", "name": "summary", "value": "={{ 'Script saved to /claude-workspace/scripts/' + $('Extract Intent').item.json.script_filename + ' (' + $('Extract Intent').item.json.script_language + ')' }}", "type": "string" }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "cd5058fa-dc64-438d-ad25-79e57f6d3da4",
+      "name": "Respond - Script",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [1820, 560],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { \"status\": \"ok\", \"action\": $json.action, \"summary\": $json.summary, \"timestamp\": $now.toISO() } }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "61d9327b-7938-4800-a95c-5a74a388bf42",
+      "name": "Route Target System",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [1220, 940],
+      "parameters": {
+        "mode": "rules",
+        "rules": {
+          "values": [
+            { "conditions": { "options": { "caseSensitive": false, "leftValue": "", "typeValidation": "strict" }, "conditions": [ { "leftValue": "={{ $json.target_system }}", "operator": { "type": "string", "operation": "equals" }, "rightValue": "halopsa" } ], "combinator": "and" }, "renameOutput": true, "outputKey": "halopsa" },
+            { "conditions": { "options": { "caseSensitive": false, "leftValue": "", "typeValidation": "strict" }, "conditions": [ { "leftValue": "={{ $json.target_system }}", "operator": { "type": "string", "operation": "equals" }, "rightValue": "msgraph" } ], "combinator": "and" }, "renameOutput": true, "outputKey": "msgraph" }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "736b8254-4bce-4fff-a9cb-e80ab22d7692",
+      "name": "HaloPSA API Call",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [1440, 840],
+      "parameters": {
+        "method": "={{ $json.http_method || \"POST\" }}",
+        "url": "={{ $json.endpoint }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "oAuth2Api",
+        "sendHeaders": true,
+        "specifyHeaders": "keypair",
+        "headerParameters": { "parameters": [ { "name": "content-type", "value": "application/json" } ] },
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.payload || {}) }}",
+        "options": { "response": { "response": { "neverError": true } } }
+      },
+      "credentials": {
+        "oAuth2Api": { "id": "DgMhUz8gJRLimxV4", "name": "HaloPSA - Generic OAuth2" }
+      }
+    },
+    {
+      "id": "cace7f12-d086-407c-9d41-ccd467e58656",
+      "name": "Summary - HaloPSA",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [1640, 840],
+      "parameters": {
+        "mode": "manual",
+        "includeOtherFields": false,
+        "assignments": {
+          "assignments": [
+            { "id": "h1", "name": "action", "value": "EXECUTE_API", "type": "string" },
+            { "id": "h2", "name": "summary", "value": "={{ 'Executed ' + ($('Extract Intent').item.json.http_method || 'POST') + ' ' + $('Extract Intent').item.json.endpoint + ' on HaloPSA' }}", "type": "string" }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "6d2417d2-15ce-4df2-a425-f98f03f7da37",
+      "name": "Respond - HaloPSA",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [1840, 840],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { \"status\": \"ok\", \"action\": $json.action, \"summary\": $json.summary, \"timestamp\": $now.toISO() } }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "672f495c-740e-48b5-b3ec-07f7d38242e8",
+      "name": "Microsoft Graph API Call",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [1440, 1040],
+      "parameters": {
+        "method": "={{ $json.http_method || \"POST\" }}",
+        "url": "={{ $json.endpoint }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "oAuth2Api",
+        "sendHeaders": true,
+        "specifyHeaders": "keypair",
+        "headerParameters": { "parameters": [ { "name": "content-type", "value": "application/json" } ] },
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.payload || {}) }}",
+        "options": { "response": { "response": { "neverError": true } } }
+      },
+      "credentials": {
+        "oAuth2Api": { "id": "4wyhPuBINu2NwRTG", "name": "Graph App-Only - GestionTI Mail" }
+      }
+    },
+    {
+      "id": "f58fe963-791e-437b-b498-1419822a809d",
+      "name": "Summary - MS Graph",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [1640, 1040],
+      "parameters": {
+        "mode": "manual",
+        "includeOtherFields": false,
+        "assignments": {
+          "assignments": [
+            { "id": "g1", "name": "action", "value": "EXECUTE_API", "type": "string" },
+            { "id": "g2", "name": "summary", "value": "={{ 'Executed ' + ($('Extract Intent').item.json.http_method || 'POST') + ' ' + $('Extract Intent').item.json.endpoint + ' on Microsoft Graph' }}", "type": "string" }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "0f5c2992-53c1-42ce-a3e6-f1eb3a0b2d7f",
+      "name": "Respond - MS Graph",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [1840, 1040],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { \"status\": \"ok\", \"action\": $json.action, \"summary\": $json.summary, \"timestamp\": $now.toISO() } }}",
+        "options": {}
+      }
+    }
+  ],
+  "connections": {
+    "Mobile Voice Webhook": { "main": [ [ { "node": "Normalize Input", "type": "main", "index": 0 } ] ] },
+    "Normalize Input": { "main": [ [ { "node": "Build Router Prompt", "type": "main", "index": 0 } ] ] },
+    "Build Router Prompt": { "main": [ [ { "node": "Claude Router (Parse Intent)", "type": "main", "index": 0 } ] ] },
+    "Claude Router (Parse Intent)": { "main": [ [ { "node": "Extract Intent", "type": "main", "index": 0 } ] ] },
+    "Extract Intent": { "main": [ [ { "node": "Route Action", "type": "main", "index": 0 } ] ] },
+    "Route Action": { "main": [ [ { "node": "n8n Get Workflow", "type": "main", "index": 0 } ], [ { "node": "Script to Binary", "type": "main", "index": 0 } ], [ { "node": "Route Target System", "type": "main", "index": 0 } ] ] },
+    "n8n Get Workflow": { "main": [ [ { "node": "Prepare Modify Prompt", "type": "main", "index": 0 } ] ] },
+    "Prepare Modify Prompt": { "main": [ [ { "node": "Claude Modify Workflow", "type": "main", "index": 0 } ] ] },
+    "Claude Modify Workflow": { "main": [ [ { "node": "Extract Updated Workflow", "type": "main", "index": 0 } ] ] },
+    "Extract Updated Workflow": { "main": [ [ { "node": "n8n Update Workflow", "type": "main", "index": 0 } ] ] },
+    "n8n Update Workflow": { "main": [ [ { "node": "Summary - Modify", "type": "main", "index": 0 } ] ] },
+    "Summary - Modify": { "main": [ [ { "node": "Respond - Modify", "type": "main", "index": 0 } ] ] },
+    "Script to Binary": { "main": [ [ { "node": "Save Script to Disk", "type": "main", "index": 0 } ] ] },
+    "Save Script to Disk": { "main": [ [ { "node": "Summary - Script", "type": "main", "index": 0 } ] ] },
+    "Summary - Script": { "main": [ [ { "node": "Respond - Script", "type": "main", "index": 0 } ] ] },
+    "Route Target System": { "main": [ [ { "node": "HaloPSA API Call", "type": "main", "index": 0 } ], [ { "node": "Microsoft Graph API Call", "type": "main", "index": 0 } ] ] },
+    "HaloPSA API Call": { "main": [ [ { "node": "Summary - HaloPSA", "type": "main", "index": 0 } ] ] },
+    "Summary - HaloPSA": { "main": [ [ { "node": "Respond - HaloPSA", "type": "main", "index": 0 } ] ] },
+    "Microsoft Graph API Call": { "main": [ [ { "node": "Summary - MS Graph", "type": "main", "index": 0 } ] ] },
+    "Summary - MS Graph": { "main": [ [ { "node": "Respond - MS Graph", "type": "main", "index": 0 } ] ] }
+  }
+}
