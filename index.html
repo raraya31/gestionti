@@ -373,21 +373,27 @@
     .sectors-grid{grid-template-columns:1fr}
     .hero-card{max-width:520px}
   }
-  @media(max-width:720px){
-    section{padding:70px 0}
-    .nav-links,.nav-phone{display:none}
-    .nav-cta .btn-primary{display:none}
-    .burger{display:block}
-    .nav-links.open{display:flex;position:absolute;top:64px;left:16px;right:16px;flex-direction:column;align-items:flex-start;gap:4px;background:#fff;padding:16px;border-radius:16px;box-shadow:var(--shadow-md);border:1px solid var(--line)}
-    .nav-links.open a{padding:10px 6px;width:100%;color:var(--slate)}
-    .nav-links.open a:hover{color:var(--accent-deep)}
-    .cards,.plans,.steps,.stat-grid{grid-template-columns:1fr}
-    .hero{padding:120px 0 70px}
-    .hero .cta-row .btn{flex:1}
-  }
-</style>
-</head>
-<body>
+	@media(max-width:720px){
+	    section{padding:70px 0}
+	    .nav-links,.nav-phone{display:none}
+	    .nav-cta .btn-primary{display:none}
+	    .burger{display:block}
+	    .nav-links.open{display:flex;position:absolute;top:64px;left:16px;right:16px;flex-direction:column;align-items:flex-start;gap:4px;background:#fff;padding:16px;border-radius:16px;box-shadow:var(--shadow-md);border:1px solid var(--line)}
+	    .nav-links.open a{padding:10px 6px;width:100%;color:var(--slate)}
+	    .nav-links.open a:hover{color:var(--accent-deep)}
+	    .cards,.plans,.steps,.stat-grid{grid-template-columns:1fr}
+	    .hero{padding:120px 0 70px}
+	    .hero .cta-row .btn{flex:1}
+	  }
+	</style>
+
+	<!-- Apollo Website Tracking -->
+	<script>function initApollo(){var n=Math.random().toString(36).substring(7),o=document.createElement("script");
+	o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,
+	o.onload=function(){window.trackingFunctions.onLoad({appId:"6a997098f8375e00147ea615"})},
+	document.head.appendChild(o)}initApollo();</script>
+	</head>
+	<body>
 
 <!-- ================= HEADER ================= -->
 <header id="header">
