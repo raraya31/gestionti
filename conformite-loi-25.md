@@ -5,9 +5,9 @@
 
 ## Mesures publiées
 
-Le site publie maintenant une politique de confidentialité accessible depuis le pied de page et à proximité immédiate du formulaire. Elle désigne le **Responsable de la protection des renseignements personnels** et fournit l’adresse `confidentialite@gestionti.info` pour les questions, plaintes, demandes d’accès, de rectification, de portabilité et de retrait de consentement.
+Le site publie maintenant une politique de confidentialité accessible depuis le pied de page et à proximité immédiate du formulaire. Elle fournit l’adresse `confidentialite@gestionti.info` pour les questions, plaintes, demandes d’accès, de rectification, de portabilité, de cessation de la diffusion, de désindexation et de retrait de consentement. **Le nom et le titre de la personne responsable doivent encore être confirmés puis publiés; une boîte de courriel ne remplace pas cette désignation.**
 
-Le formulaire de consultation explique avant l’envoi qu’il est traité par Formspree afin d’acheminer la demande. Il indique quelles catégories de renseignements sont demandées, prévient contre l’envoi de renseignements sensibles et requiert une confirmation distincte de lecture de la politique. Un visiteur peut utiliser le téléphone ou le courriel au lieu du formulaire ou de la prise de rendez-vous en ligne.
+Le formulaire de consultation explique avant l’envoi qu’il est traité par Formspree afin d’acheminer la demande. Il indique quelles catégories de renseignements sont demandées, prévient contre l’envoi de renseignements sensibles et requiert une confirmation distincte de lecture de la politique. Un visiteur peut utiliser le téléphone ou le courriel au lieu du formulaire ou de la prise de rendez-vous en ligne. La politique affiche maintenant les durées précises de conservation : 12 mois pour les demandes et réservations, 7 ans pour les dossiers clients, contractuels et fiscaux, et 12 mois pour les journaux de sécurité et d’administration disponibles.
 
 Le traceur Apollo a été supprimé. Le site ne charge plus non plus Google Fonts. Il n’y a désormais ni analytique d’audience, ni pixel marketing, ni profilage, ni identifiant publicitaire chargé automatiquement sur `gestionti.info`.
 
@@ -22,13 +22,15 @@ Des en-têtes de sécurité sont ajoutés dans le document HTML. Ils limitent le
 | Courriel ou téléphone | Renseignements choisis par le visiteur | Gestion TI Informatique traite la demande sans imposer l’usage du formulaire. |
 | Hébergement | Données techniques nécessaires à la disponibilité et à la sécurité du site | GitHub Pages héberge le site public. |
 
-## Actions organisationnelles à maintenir
+## Documents internes et actions organisationnelles
 
-La politique publique ne suffit pas, à elle seule, à assurer la conformité de l’entreprise. La direction doit confirmer que la personne ou la fonction derrière `confidentialite@gestionti.info` est officiellement responsable de la protection des renseignements personnels, ou documenter sa délégation. Elle doit également appliquer une procédure interne de conservation et de destruction, limiter l’accès aux demandes aux personnes autorisées, traiter les demandes de droits, tenir un registre des incidents de confidentialité et former les personnes concernées.
+La politique publique ne suffit pas, à elle seule, à assurer la conformité de l’entreprise. Les documents internes suivants ont été créés le 17 septembre 2026 et doivent être conservés dans un espace à accès restreint, jamais dans le dépôt GitHub public : une EFVP pour Formspree, une EFVP pour Microsoft Bookings, un calendrier de conservation et de destruction, ainsi qu’un registre des incidents de confidentialité.
 
-Une évaluation des facteurs relatifs à la vie privée (EFVP) doit être documentée avant qu’un fournisseur externe au Québec recueille, utilise, communique ou conserve des renseignements pour l’entreprise. Cette évaluation doit donc couvrir Formspree, Microsoft Bookings, GitHub Pages et tout futur CRM, service de prise de rendez-vous, plateforme de marketing ou outil d’intelligence artificielle qui recevrait des renseignements personnels. [2]
+La direction doit confirmer et publier le nom et le titre de la personne responsable de la protection des renseignements personnels, puis faire approuver les EFVP. Elle doit également conserver les ententes de traitement des données applicables, limiter l’accès aux demandes aux personnes autorisées, appliquer le calendrier de conservation, traiter les demandes de droits, tenir le registre des incidents et former les personnes concernées.
 
-Le présent registre doit être révisé avant tout ajout de traceur, de formulaire, de publicité, de chatbot, d’outil d’analytique ou de fournisseur recevant des renseignements personnels.
+Les EFVP concluent que Formspree et Microsoft Bookings ne peuvent être utilisés que sous conditions documentées. Pour Formspree, Gestion TI Informatique doit notamment conserver l’entente de traitement applicable, limiter les accès, activer l’authentification multifacteur et supprimer les demandes après 12 mois. Pour Microsoft Bookings, elle doit confirmer la configuration du locataire et les protections contractuelles, limiter les champs et les accès, imposer l’authentification multifacteur, maintenir les journaux disponibles pendant 12 mois et supprimer les réservations après 12 mois. [2]
+
+Le présent registre doit être révisé avant tout ajout de traceur, de formulaire, de publicité, de chatbot, d’outil d’analytique ou de fournisseur recevant des renseignements personnels. Toute nouvelle communication de renseignements hors Québec ou modification importante d’un système impliquant des renseignements personnels exige une analyse et, au besoin, une mise à jour de l’EFVP. [2]
 
 ## Références
 
