@@ -6,6 +6,8 @@
 <title>Gestion TI Informatique — Services TI gérés pour PME | Mirabel & Grand Montréal</title>
 <meta name="description" content="Services TI gérés, cybersécurité, Microsoft 365 et automatisation par IA pour les PME du Grand Montréal et des Laurentides. Partenaire Microsoft. Spécialité concessionnaires automobiles." />
 <meta name="theme-color" content="#0a1628" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; connect-src 'self' https://formspree.io; form-action https://formspree.io; base-uri 'self'; frame-ancestors 'none'; upgrade-insecure-requests" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
@@ -86,10 +88,6 @@
 }
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-
 <style>
   :root{
     --navy:#0a1628;
@@ -108,8 +106,8 @@
     --shadow-sm:0 1px 2px rgba(15,23,42,.06),0 4px 16px rgba(15,23,42,.05);
     --shadow-md:0 12px 40px rgba(10,22,40,.12);
     --maxw:1180px;
-    --font:'Plus Jakarta Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-    --font-body:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    --font:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    --font-body:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -345,6 +343,12 @@
   .field input,.field textarea,.field select{width:100%;padding:13px 15px;border:1.5px solid var(--line);border-radius:11px;font-family:var(--font-body);font-size:15px;color:var(--ink);background:#fbfcfe;transition:border-color .15s,box-shadow .15s}
   .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(14,165,233,.14);background:#fff}
   .field textarea{resize:vertical;min-height:110px}
+  .form-privacy{margin:0 0 18px;padding:12px 14px;border-left:3px solid var(--accent);background:#edf8ff;color:#31506c;font-size:12.5px;line-height:1.55}
+  .form-privacy a{color:#0369a1;font-weight:800;text-underline-offset:3px}
+  .privacy-consent{display:flex;align-items:flex-start;gap:10px;margin:2px 0 17px;color:var(--slate);font-size:12.5px;line-height:1.55}
+  .privacy-consent input{width:17px;height:17px;flex:none;margin:2px 0 0;accent-color:var(--accent-deep)}
+  .privacy-consent label{display:block;margin:0;color:var(--slate);font:inherit}
+  .privacy-consent a{color:#0369a1;font-weight:800;text-underline-offset:3px}
   .form-note{font-size:12.5px;color:var(--slate-2);margin-top:12px;text-align:center}
 
   /* ---------- Footer ---------- */
@@ -387,11 +391,6 @@
   }
 </style>
 
-<!-- Apollo Website Tracking -->
-<script>function initApollo(){var n=Math.random().toString(36).substring(7),o=document.createElement("script");
-o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,
-o.onload=function(){window.trackingFunctions.onLoad({appId:"6a997098f8375e00147ea615"})},
-document.head.appendChild(o)}initApollo();</script>
 </head>
 <body>
 
@@ -778,7 +777,8 @@ document.head.appendChild(o)}initApollo();</script>
     <div class="form-card reveal">
       <h3>Demander une consultation gratuite</h3>
       <p class="fsub">Remplissez le formulaire — nous vous répondons rapidement, en français.</p>
-      <form class="lead-form" id="leadForm" action="https://formspree.io/f/xaewqynn" method="POST" novalidate>
+      <p class="form-privacy" id="formPrivacy">Le formulaire est traité par Formspree afin de nous acheminer votre demande. Inscrivez uniquement les renseignements nécessaires à votre demande; n’envoyez jamais de mot de passe, renseignement bancaire ou autre information sensible. <a href="/confidentialite.html">Consultez notre politique de confidentialité.</a></p>
+      <form class="lead-form" id="leadForm" action="https://formspree.io/f/xaewqynn" method="POST" novalidate aria-describedby="formPrivacy">
         <div class="frow">
           <div class="field">
             <label for="lf-name">Nom complet <span class="req">*</span></label>
@@ -803,6 +803,10 @@ document.head.appendChild(o)}initApollo();</script>
         </div>
         <input type="hidden" name="_subject" value="Nouvelle demande de consultation — gestionti.info">
         <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+        <div class="privacy-consent">
+          <input id="privacy-consent" type="checkbox" required>
+          <label for="privacy-consent">J’ai lu la <a href="/confidentialite.html">Politique de confidentialité</a> et je comprends que mes renseignements seront transmis à Formspree afin d’acheminer ma demande à Gestion TI Informatique.</label>
+        </div>
         <button type="submit" class="btn btn-primary">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
           Envoyer ma demande
@@ -814,7 +818,7 @@ document.head.appendChild(o)}initApollo();</script>
         <h4>Merci ! Votre demande est envoyée.</h4>
         <p>Nous vous répondons rapidement, en français — habituellement sous un jour ouvrable.</p>
       </div>
-      <p class="form-note">Réponse rapide · Consultation sans engagement · Service en français</p>
+      <p class="form-note">Réponse rapide · Consultation sans engagement · Service en français · <a href="/confidentialite.html">Vie privée</a></p>
     </div>
   </div>
 </section>
@@ -861,7 +865,7 @@ document.head.appendChild(o)}initApollo();</script>
     </div>
     <div class="foot-bottom">
       <span>© 2026 Gestion TI Informatique. Tous droits réservés.</span>
-      <span>Mirabel, Québec · Service en français</span>
+      <span><a href="/confidentialite.html">Politique de confidentialité</a> · Mirabel, Québec · Service en français</span>
     </div>
   </div>
 </footer>
