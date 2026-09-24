@@ -224,16 +224,19 @@
   .client-trust-inner{display:grid;grid-template-columns:minmax(220px,.85fr) minmax(0,1.15fr);gap:54px;align-items:center}
   .client-trust-copy h2{font-size:clamp(28px,4vw,40px);margin:16px 0 14px}
   .client-trust-copy p{color:var(--slate);font-size:17px;max-width:440px}
-  .client-logos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .client-logos{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
   .client-logo{
-    min-height:148px;display:flex;align-items:center;justify-content:center;padding:28px;
+    min-height:146px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:22px;
     background:linear-gradient(145deg,#fff,#f7faff);border:1px solid var(--line);border-radius:16px;
     box-shadow:var(--shadow-sm);transition:transform .2s ease,box-shadow .2s ease,border-color .2s;
   }
   .client-logo:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:rgba(14,165,233,.42)}
   .client-logo:focus-visible{outline:3px solid var(--accent-2);outline-offset:4px}
-  .client-logo img{width:100%;max-width:210px;max-height:74px;object-fit:contain;filter:grayscale(1);opacity:.9;transition:filter .2s ease,opacity .2s ease}
-  .client-logo:hover img,.client-logo:focus-visible img{filter:grayscale(0);opacity:1}
+  .client-logo img{width:100%;max-width:152px;max-height:68px;object-fit:contain;transition:transform .2s ease}
+  .client-logo:hover img,.client-logo:focus-visible img{transform:scale(1.03)}
+  .client-logo-name{color:var(--slate-2);font-family:var(--font);font-size:11px;font-weight:700;letter-spacing:.04em;text-align:center}
+  .client-logo--dark{background:linear-gradient(145deg,#143651,#09243a);border-color:#143e5e}
+  .client-logo--dark .client-logo-name{color:#d6e8f5}
 
   /* ---------- Services ---------- */
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
@@ -392,6 +395,7 @@
     .steps{grid-template-columns:1fr 1fr}
     .sectors-grid{grid-template-columns:1fr}
     .hero-card{max-width:520px}
+    .client-logos{grid-template-columns:repeat(3,minmax(0,1fr))}
   }
   @media(max-width:720px){
     section{padding:70px 0}
@@ -402,7 +406,7 @@
     .nav-links.open a{padding:10px 6px;width:100%;color:var(--slate)}
     .nav-links.open a:hover{color:var(--accent-deep)}
     .cards,.plans,.steps,.stat-grid{grid-template-columns:1fr}
-    .client-logos{grid-template-columns:1fr}
+    .client-logos{grid-template-columns:repeat(2,minmax(0,1fr))}
     .client-logo{min-height:132px;padding:26px}
     .hero{padding:120px 0 70px}
     .hero .cta-row .btn{flex:1}
@@ -522,10 +526,44 @@
     </div>
     <div class="client-logos reveal" aria-label="Clients de Gestion TI Informatique">
       <a class="client-logo" href="https://www.hamelbmw.com/" target="_blank" rel="noopener noreferrer" aria-label="Visiter le site de Hamel BMW">
-        <img src="assets/clients/hamel-bmw.png" width="262" height="104" alt="Hamel BMW Blainville">
+        <img src="assets/clients/hamel-bmw.png" width="265" height="97" alt="Hamel BMW Blainville">
+        <span class="client-logo-name">Hamel BMW</span>
       </a>
       <a class="client-logo" href="https://www.stetheresetoyota.com/fr" target="_blank" rel="noopener noreferrer" aria-label="Visiter le site de Ste-Thérèse Toyota">
         <img src="assets/clients/ste-therese-toyota.png" width="334" height="112" alt="Ste-Thérèse Toyota">
+        <span class="client-logo-name">Ste-Thérèse Toyota</span>
+      </a>
+      <a class="client-logo" href="https://www.innovatec.ca/" target="_blank" rel="noopener noreferrer" aria-label="Visiter le site d’Ascenseurs Innovatec">
+        <img src="assets/clients/ascenseurs-innovatec.png" width="1441" height="1080" alt="Ascenseurs Innovatec">
+        <span class="client-logo-name">Ascenseurs Innovatec</span>
+      </a>
+      <a class="client-logo client-logo--dark" href="https://www.fruigor.com/" target="_blank" rel="noopener noreferrer" aria-label="Visiter le site des Entrepôts Fruigor">
+        <img src="assets/clients/entrepots-fruigor.svg" width="296" height="79" alt="Les Entrepôts Fruigor">
+        <span class="client-logo-name">Les Entrepôts Fruigor</span>
+      </a>
+      <a class="client-logo" href="https://www.morascpa.com/" target="_blank" rel="noopener noreferrer" aria-label="Visiter le site de Moras CPA">
+        <img src="assets/clients/moras-cpa.png" width="4822" height="1044" alt="Moras CPA">
+        <span class="client-logo-name">Moras CPA</span>
+      </a>
+      <a class="client-logo" href="https://www.nomadicexpo.ca/" target="_blank" rel="noopener noreferrer" aria-label="Visiter le site de Nomadic Expo">
+        <img src="assets/clients/nomadic-expo.svg" width="276" height="53" alt="Nomadic Expo">
+        <span class="client-logo-name">Nomadic Expo</span>
+      </a>
+      <a class="client-logo" href="https://www.lesdeuxaires.com/" target="_blank" rel="noopener noreferrer" aria-label="Visiter le site de la Résidence Les Deux Aires">
+        <img src="assets/clients/residence-les-deux-aires.png" width="397" height="350" alt="Résidence Les Deux Aires">
+        <span class="client-logo-name">Résidence Les Deux Aires</span>
+      </a>
+      <a class="client-logo" href="https://www.soccermirabel.com/" target="_blank" rel="noopener noreferrer" aria-label="Visiter le site de Soccer Mirabel">
+        <img src="assets/clients/soccer-mirabel.png" width="1079" height="1079" alt="Soccer Mirabel — FC Challenger">
+        <span class="client-logo-name">Soccer Mirabel</span>
+      </a>
+      <a class="client-logo" href="https://www.trbmw.com/" target="_blank" rel="noopener noreferrer" aria-label="Visiter le site de Trois-Rivières BMW">
+        <img src="assets/clients/trois-rivieres-bmw.webp" width="600" height="315" alt="Trois-Rivières BMW et MINI">
+        <span class="client-logo-name">Trois-Rivières BMW</span>
+      </a>
+      <a class="client-logo" href="https://www.voyagesbelaro.com/" target="_blank" rel="noopener noreferrer" aria-label="Visiter le site de Voyages Belaro Mirabel">
+        <img src="assets/clients/voyages-belaro-mirabel.svg" width="339" height="176" alt="Voyages Belaro Mirabel">
+        <span class="client-logo-name">Voyages Belaro Mirabel</span>
       </a>
     </div>
   </div>
