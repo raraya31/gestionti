@@ -161,8 +161,9 @@
   .logo .wordmark{display:block;width:178px;height:auto;flex:none}
   /* Default (over dark hero): white wordmark. Flipped to navy when header.scrolled. */
   .logo .wordmark--light{display:none}
-  .nav-links{display:flex;align-items:center;gap:24px}
-  .nav-links a{font-family:var(--font);font-weight:600;font-size:15px;color:rgba(233,242,251,.88);white-space:nowrap;transition:color .15s}
+  .nav-links{display:flex;align-items:center;gap:12px}
+  .nav-links a{font-family:var(--font);font-weight:600;font-size:14px;color:rgba(233,242,251,.88);white-space:nowrap;transition:color .15s}
+  .nav-cta .btn-primary{padding:12px 14px;font-size:14px}
   .nav-links a:hover{color:#fff}
   .nav-cta{display:flex;align-items:center;gap:14px}
   .nav-phone{font-family:var(--font);font-weight:700;color:#fff;font-size:15px;display:flex;align-items:center;gap:7px;white-space:nowrap;transition:color .25s}
@@ -405,8 +406,19 @@
   /* ---------- Responsive ---------- */
   @media(max-width:1280px){
     .nav-phone{display:none}
-    .nav-links{gap:16px}
-    .nav-links a{font-size:14px}
+    .nav-links{gap:14px}
+  }
+  @media(max-width:1099px){
+    .nav-links,.nav-phone{display:none}
+    .burger{display:block}
+    .nav-links.open{display:flex;position:absolute;top:72px;left:16px;right:16px;flex-direction:column;align-items:flex-start;gap:4px;background:#fff;padding:16px;border-radius:16px;box-shadow:var(--shadow-md);border:1px solid var(--line);max-height:calc(100vh - 96px);overflow:auto}
+    .nav-links.open a{padding:10px 6px;width:100%;color:var(--slate)}
+    .nav-links.open a:hover{color:var(--accent-deep)}
+    .nav-links.open .nav-drop{width:100%}
+    .nav-links.open .nav-drop-menu{display:block;position:static;transform:none;min-width:0;padding:0 0 4px 8px}
+    .nav-links.open .nav-drop-menu::before{display:none}
+    .nav-links.open .nav-drop-menu a{margin:0;padding:8px 6px;width:100%;color:var(--slate);font-size:14px}
+    .nav-links.open .nav-drop-menu a:hover{background:transparent;color:var(--accent-deep)}
   }
   @media(max-width:960px){
     .hero-inner,.ai-inner,.why-inner,.contact-inner,.client-trust-inner{grid-template-columns:1fr;gap:40px}
@@ -423,17 +435,8 @@
   @media(max-width:720px){
     section{padding:70px 0}
     .logo .wordmark{width:154px}
-    .nav-links,.nav-phone{display:none}
     .nav-cta .btn-primary{display:none}
-    .burger{display:block}
-    .nav-links.open{display:flex;position:absolute;top:64px;left:16px;right:16px;flex-direction:column;align-items:flex-start;gap:4px;background:#fff;padding:16px;border-radius:16px;box-shadow:var(--shadow-md);border:1px solid var(--line);max-height:calc(100vh - 88px);overflow:auto}
-    .nav-links.open a{padding:10px 6px;width:100%;color:var(--slate)}
-    .nav-links.open a:hover{color:var(--accent-deep)}
-    .nav-links.open .nav-drop{width:100%}
-    .nav-links.open .nav-drop-menu{display:block;position:static;transform:none;min-width:0;padding:0 0 4px 8px}
-    .nav-links.open .nav-drop-menu::before{display:none}
-    .nav-links.open .nav-drop-menu a{margin:0;padding:8px 6px;width:100%;color:var(--slate);font-size:14px}
-    .nav-links.open .nav-drop-menu a:hover{background:transparent;color:var(--accent-deep)}
+    .nav-links.open{top:64px}
     .foot-top{grid-template-columns:1fr}
     .ressources-landings{grid-template-columns:1fr}
     .cards,.plans,.steps,.stat-grid{grid-template-columns:1fr}
@@ -481,7 +484,7 @@
         (514) 742-6455
       </a>
       <a href="https://outlook.office.com/bookwithme/user/9833653fd52e42ac871dd98b34d2c22d@gestionti.info/meetingtype/OPz3PT7T-EiTB3st_FznLw2?anonymous&amp;ep=plink" target="_blank" rel="noopener" class="btn btn-primary">Réserver une consultation</a>
-      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+      <button class="burger" id="burger" type="button" aria-label="Menu" aria-controls="navLinks" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>
@@ -1046,15 +1049,22 @@
   // Mobile menu
   const burger=document.getElementById('burger');
   const navLinks=document.getElementById('navLinks');
-  burger.addEventListener('click',()=>navLinks.classList.toggle('open'));
-  navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
   const navDrop=document.querySelector('.nav-drop');
   const navDropToggle=navDrop.querySelector('.nav-drop-toggle');
   const setDropExpanded=(open)=>navDropToggle.setAttribute('aria-expanded',open?'true':'false');
-  navDrop.addEventListener('mouseenter',()=>setDropExpanded(true));
-  navDrop.addEventListener('mouseleave',()=>setDropExpanded(false));
+  const closeNav=()=>{navLinks.classList.remove('open');burger.setAttribute('aria-expanded','false');setDropExpanded(false);};
+  burger.setAttribute('aria-expanded','false');
+  burger.addEventListener('click',()=>{
+    const open=!navLinks.classList.contains('open');
+    navLinks.classList.toggle('open',open);
+    burger.setAttribute('aria-expanded',open?'true':'false');
+    setDropExpanded(open);
+  });
+  navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeNav));
+  navDrop.addEventListener('mouseenter',()=>{if(!navLinks.classList.contains('open'))setDropExpanded(true);});
+  navDrop.addEventListener('mouseleave',()=>{if(!navLinks.classList.contains('open'))setDropExpanded(false);});
   navDrop.addEventListener('focusin',()=>setDropExpanded(true));
-  navDrop.addEventListener('focusout',()=>setDropExpanded(false));
+  navDrop.addEventListener('focusout',()=>{if(!navLinks.classList.contains('open'))setDropExpanded(false);});
 
   // FAQ accordion
   document.querySelectorAll('.faq-item').forEach(item=>{
