@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Gestion TI Informatique — Services TI gérés pour PME | Mirabel & Grand Montréal</title>
-<meta name="description" content="Services TI gérés, cybersécurité, Microsoft 365 et automatisation par IA pour les PME du Grand Montréal et des Laurentides. Partenaire Microsoft. Spécialité concessionnaires automobiles." />
+<title>MSP Mirabel | Services TI gérés PME — Grand Montréal</title>
+<meta name="description" content="Services TI gérés, cybersécurité et Microsoft 365 pour PME à Mirabel, Laurentides et Grand Montréal. Consultation gratuite avec Gestion TI Informatique." />
 <meta name="theme-color" content="#0a1628" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; connect-src 'self' https://formspree.io; form-action https://formspree.io; base-uri 'self'; frame-ancestors 'none'; upgrade-insecure-requests" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Gestion TI Informatique — Votre équipe TI, sans les tracas" />
-<meta property="og:description" content="Services gérés, cybersécurité, Microsoft 365 et IA pour les PME du Québec." />
+<meta property="og:title" content="MSP Mirabel | Services TI gérés PME — Grand Montréal" />
+<meta property="og:description" content="Services TI gérés, cybersécurité et Microsoft 365 pour PME à Mirabel, Laurentides et Grand Montréal. Consultation gratuite avec Gestion TI Informatique." />
 <meta property="og:locale" content="fr_CA" />
 <meta property="og:url" content="https://gestionti.info/" />
 <link rel="canonical" href="https://gestionti.info/" />
@@ -175,6 +175,18 @@
   header.scrolled .nav-links a:hover{color:var(--accent-deep)}
   header.scrolled .nav-phone{color:var(--navy)}
   header.scrolled .burger span{background:var(--navy)}
+  .nav-drop{position:relative}
+  .nav-drop-toggle{display:inline-flex;align-items:center}
+  .nav-drop-toggle::after{content:"";width:0;height:0;margin-left:6px;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid currentColor;transform:translateY(1px)}
+  .nav-drop-menu{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:248px;padding-top:12px;z-index:60}
+  .nav-drop-menu::before{content:"";position:absolute;top:12px;left:8px;right:8px;bottom:0;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-md)}
+  .nav-drop:hover .nav-drop-menu,.nav-drop:focus-within .nav-drop-menu{display:block}
+  .nav-drop-menu a{position:relative;display:block;margin:0 8px;padding:10px 12px;border-radius:10px;color:var(--navy);font-size:14px}
+  .nav-drop-menu a:first-of-type{margin-top:8px}
+  .nav-drop-menu a:last-of-type{margin-bottom:8px}
+  .nav-drop-menu a:hover,.nav-drop-menu a:focus-visible{background:var(--bg-soft);color:var(--accent-deep)}
+  header.scrolled .nav-drop-menu a{color:var(--navy)}
+  header.scrolled .nav-drop-menu a:hover,header.scrolled .nav-drop-menu a:focus-visible{color:var(--accent-deep)}
 
   /* ---------- Hero ---------- */
   .hero{
@@ -250,6 +262,13 @@
   .card h3{font-size:19px;margin-bottom:9px}
   .card p{color:var(--slate);font-size:15px}
   .card .tag{position:absolute;top:16px;right:16px;font-family:var(--font);font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--accent-deep);background:rgba(14,165,233,.1);padding:4px 10px;border-radius:100px}
+  .guide-card{display:flex;flex-direction:column;color:inherit;height:100%}
+  .guide-card h3{font-size:18px;padding-right:64px}
+  .guide-card p{flex:1}
+  .guide-card .more{margin-top:16px;font-family:var(--font);font-weight:700;font-size:13.5px;color:var(--accent-deep)}
+  .ressources-label{font-family:var(--font);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate-2);margin:0 0 16px}
+  .ressources-block+.ressources-block{margin-top:36px}
+  .ressources-landings{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
 
   /* ---------- AI band ---------- */
   .ai{
@@ -372,7 +391,7 @@
 
   /* ---------- Footer ---------- */
   footer{background:#070f1c;color:#9fb0c6;padding:64px 0 30px}
-  .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.08)}
+  .foot-top{display:grid;grid-template-columns:1.35fr 1fr 1fr 1fr .95fr;gap:28px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.08)}
   .foot-brand .logo .wordmark{width:205px}
   .foot-brand p{font-size:14px;margin-top:16px;max-width:290px;color:#8698af}
   .foot-col h4{color:#fff;font-family:var(--font);font-size:14px;letter-spacing:.04em;margin-bottom:16px}
@@ -386,8 +405,8 @@
   /* ---------- Responsive ---------- */
   @media(max-width:1280px){
     .nav-phone{display:none}
-    .nav-links{gap:20px}
-    .nav-links a{font-size:14.5px}
+    .nav-links{gap:16px}
+    .nav-links a{font-size:14px}
   }
   @media(max-width:960px){
     .hero-inner,.ai-inner,.why-inner,.contact-inner,.client-trust-inner{grid-template-columns:1fr;gap:40px}
@@ -395,6 +414,8 @@
     .steps{grid-template-columns:1fr 1fr}
     .sectors-grid{grid-template-columns:1fr}
     .hero-card{max-width:520px}
+    .foot-top{grid-template-columns:1fr 1fr;gap:28px}
+    .ressources-landings{grid-template-columns:1fr 1fr}
     .client-logos{grid-template-columns:repeat(3,minmax(0,1fr))}
     .client-logo:nth-child(9){grid-column:auto}
     .client-logo:nth-child(10){grid-column:2}
@@ -405,9 +426,16 @@
     .nav-links,.nav-phone{display:none}
     .nav-cta .btn-primary{display:none}
     .burger{display:block}
-    .nav-links.open{display:flex;position:absolute;top:64px;left:16px;right:16px;flex-direction:column;align-items:flex-start;gap:4px;background:#fff;padding:16px;border-radius:16px;box-shadow:var(--shadow-md);border:1px solid var(--line)}
+    .nav-links.open{display:flex;position:absolute;top:64px;left:16px;right:16px;flex-direction:column;align-items:flex-start;gap:4px;background:#fff;padding:16px;border-radius:16px;box-shadow:var(--shadow-md);border:1px solid var(--line);max-height:calc(100vh - 88px);overflow:auto}
     .nav-links.open a{padding:10px 6px;width:100%;color:var(--slate)}
     .nav-links.open a:hover{color:var(--accent-deep)}
+    .nav-links.open .nav-drop{width:100%}
+    .nav-links.open .nav-drop-menu{display:block;position:static;transform:none;min-width:0;padding:0 0 4px 8px}
+    .nav-links.open .nav-drop-menu::before{display:none}
+    .nav-links.open .nav-drop-menu a{margin:0;padding:8px 6px;width:100%;color:var(--slate);font-size:14px}
+    .nav-links.open .nav-drop-menu a:hover{background:transparent;color:var(--accent-deep)}
+    .foot-top{grid-template-columns:1fr}
+    .ressources-landings{grid-template-columns:1fr}
     .cards,.plans,.steps,.stat-grid{grid-template-columns:1fr}
     .client-logos{grid-template-columns:repeat(2,minmax(0,1fr))}
     .client-logo:nth-child(10){grid-column:auto}
@@ -428,12 +456,22 @@
       <img class="wordmark wordmark--light" src="assets/brand/gestion-ti-informatique-light.svg" alt="Gestion TI Informatique">
     </a>
 
-    <nav class="nav-links" id="navLinks">
-      <a href="#services">Services</a>
+    <nav class="nav-links" id="navLinks" aria-label="Navigation principale">
+      <div class="nav-drop">
+        <a href="#services" class="nav-drop-toggle" aria-haspopup="true" aria-expanded="false">Services</a>
+        <div class="nav-drop-menu">
+          <a href="#services">Aperçu sur cette page</a>
+          <a href="services-ti-geres-mirabel.html">Services TI gérés</a>
+          <a href="cybersecurite-pme-quebec.html">Cybersécurité</a>
+          <a href="microsoft-365-migration-quebec.html">Microsoft 365</a>
+          <a href="msp-concessionnaires-automobiles.html">Concessionnaires</a>
+        </div>
+      </div>
       <a href="#ia">IA &amp; automatisation</a>
       <a href="#secteurs">Secteurs</a>
       <a href="#forfaits">Forfaits</a>
       <a href="#apropos">À propos</a>
+      <a href="#ressources">Ressources</a>
       <a href="#contact">Contact</a>
     </nav>
 
@@ -814,6 +852,69 @@
   </div>
 </section>
 
+<!-- ================= RESSOURCES ================= -->
+<section id="ressources">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Guides</span>
+      <h2>Pages services et ressources</h2>
+      <p>Le détail de nos services pour les PME de Mirabel, des Laurentides et du Grand Montréal, plus quelques guides pratiques.</p>
+    </div>
+    <div class="ressources-block">
+      <h3 class="ressources-label">Services</h3>
+      <div class="ressources-landings">
+        <a class="card guide-card reveal" href="services-ti-geres-mirabel.html">
+          <span class="tag">Mirabel</span>
+          <h3>Services TI gérés</h3>
+          <p>Infogérance proactive, helpdesk en français et forfaits prévisibles. Une équipe TI externalisée, basée à Mirabel.</p>
+          <span class="more">Voir la page →</span>
+        </a>
+        <a class="card guide-card reveal" href="cybersecurite-pme-quebec.html">
+          <span class="tag">PME</span>
+          <h3>Cybersécurité</h3>
+          <p>Contrôles concrets, surveillance et accompagnement Loi&nbsp;25, sans jargon inutile.</p>
+          <span class="more">Voir la page →</span>
+        </a>
+        <a class="card guide-card reveal" href="microsoft-365-migration-quebec.html">
+          <span class="tag">Microsoft</span>
+          <h3>Microsoft 365</h3>
+          <p>Migration du courriel et de la collaboration, locataire sécurisé, puis gestion au quotidien.</p>
+          <span class="more">Voir la page →</span>
+        </a>
+        <a class="card guide-card reveal" href="msp-concessionnaires-automobiles.html">
+          <span class="tag">Auto</span>
+          <h3>Concessionnaires</h3>
+          <p>Postes, identité et sécurité autour du DMS, avec une équipe qui connaît le rythme d’une concession.</p>
+          <span class="more">Voir la page →</span>
+        </a>
+      </div>
+    </div>
+    <div class="ressources-block">
+      <h3 class="ressources-label">Guides</h3>
+      <div class="cards">
+        <a class="card guide-card reveal" href="ressources/questions-fournisseur-services-ti-geres-msp-quebec.html">
+          <span class="tag">Checklist</span>
+          <h3>Questions à poser à un MSP</h3>
+          <p>MFA, segmentation, sauvegardes et transparence : une checklist de diligence pour choisir un fournisseur de services TI gérés au Québec.</p>
+          <span class="more">Lire le guide →</span>
+        </a>
+        <a class="card guide-card reveal" href="ressources/questions-fournisseur-ti-apres-cyberattaque-ccq.html">
+          <span class="tag">Construction</span>
+          <h3>Après la cyberattaque à la CCQ</h3>
+          <p>Cinq questions pratiques pour un entrepreneur en construction : sauvegardes, reprise et confidentialité, sans alarmisme.</p>
+          <span class="more">Lire le guide →</span>
+        </a>
+        <a class="card guide-card reveal" href="ressources/restreindre-authentification-code-appareil-microsoft-365.html">
+          <span class="tag">Microsoft 365</span>
+          <h3>Code d’appareil Microsoft 365</h3>
+          <p>Ce que l’authentification par code d’appareil change pour une PME, et quoi demander à votre fournisseur TI.</p>
+          <span class="more">Lire le guide →</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= CONTACT ================= -->
 <section id="contact" class="contact">
   <div class="wrap contact-inner">
@@ -902,10 +1003,17 @@
       </div>
       <div class="foot-col">
         <h4>Services</h4>
-        <a href="#services">Services gérés</a>
-        <a href="#services">Cybersécurité</a>
-        <a href="#services">Microsoft 365</a>
-        <a href="#ia">IA &amp; automatisation</a>
+        <a href="services-ti-geres-mirabel.html">Services TI gérés</a>
+        <a href="cybersecurite-pme-quebec.html">Cybersécurité</a>
+        <a href="microsoft-365-migration-quebec.html">Microsoft 365</a>
+        <a href="msp-concessionnaires-automobiles.html">Concessionnaires</a>
+      </div>
+      <div class="foot-col">
+        <h4>Ressources</h4>
+        <a href="ressources/questions-fournisseur-services-ti-geres-msp-quebec.html">Questions à un MSP</a>
+        <a href="ressources/questions-fournisseur-ti-apres-cyberattaque-ccq.html">Après la cyberattaque à la CCQ</a>
+        <a href="ressources/restreindre-authentification-code-appareil-microsoft-365.html">Code d’appareil Microsoft 365</a>
+        <a href="#ressources">Tous les guides</a>
       </div>
       <div class="foot-col">
         <h4>Entreprise</h4>
@@ -918,7 +1026,8 @@
         <h4>Nous joindre</h4>
         <a href="tel:+15147426455">(514) 742-6455</a>
         <a href="mailto:info@gestionti.info">info@gestionti.info</a>
-        <a href="#contact">12074 Lévis, Mirabel, QC</a>
+        <a href="https://gestionti.info/">gestionti.info</a>
+        <a href="#contact">12074 Lévis, Mirabel, QC J5J 0A5</a>
       </div>
     </div>
     <div class="foot-bottom">
@@ -939,6 +1048,13 @@
   const navLinks=document.getElementById('navLinks');
   burger.addEventListener('click',()=>navLinks.classList.toggle('open'));
   navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+  const navDrop=document.querySelector('.nav-drop');
+  const navDropToggle=navDrop.querySelector('.nav-drop-toggle');
+  const setDropExpanded=(open)=>navDropToggle.setAttribute('aria-expanded',open?'true':'false');
+  navDrop.addEventListener('mouseenter',()=>setDropExpanded(true));
+  navDrop.addEventListener('mouseleave',()=>setDropExpanded(false));
+  navDrop.addEventListener('focusin',()=>setDropExpanded(true));
+  navDrop.addEventListener('focusout',()=>setDropExpanded(false));
 
   // FAQ accordion
   document.querySelectorAll('.faq-item').forEach(item=>{
