@@ -1,12 +1,12 @@
 BEGIN:VCARD
 VERSION:3.0
-N:Araya;Rudy;;;
-FN:Rudy Araya
+N:Araya;William;;;
+FN:William Araya
 ORG:Gestion TI Informatique
-TITLE:Président
+TITLE:Coordonnateur TI
 TEL;TYPE=WORK,VOICE:+1-514-742-6455
-EMAIL;TYPE=WORK:rudy@gestionti.info
+EMAIL;TYPE=WORK:william@gestionti.info
 ADR;TYPE=WORK:;;12074 rue Lévis;Mirabel;QC;J5J 0A5;Canada
-URL:https://gestionti.info/rudy-araya.html
+URL:https://gestionti.info/william-araya.html
 NOTE:Services TI gérés, cybersécurité et automatisation IA.
 END:VCARD
