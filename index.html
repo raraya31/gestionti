@@ -158,10 +158,9 @@
   header.scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line);padding:12px 0}
   .nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
   .logo{display:flex;align-items:center;gap:11px}
-  .logo .mark{width:42px;height:42px;flex:none}
-  /* Default (over dark hero): light text. Flipped to dark when header.scrolled. */
-  .logo .name{font-family:var(--font);font-weight:800;font-size:19px;color:#fff;letter-spacing:-.02em;line-height:1;transition:color .25s}
-  .logo .name small{display:block;font-size:10.5px;font-weight:600;letter-spacing:.18em;color:var(--accent-2);text-transform:uppercase;margin-top:3px;transition:color .25s}
+  .logo .wordmark{display:block;width:178px;height:auto;flex:none}
+  /* Default (over dark hero): white wordmark. Flipped to navy when header.scrolled. */
+  .logo .wordmark--light{display:none}
   .nav-links{display:flex;align-items:center;gap:24px}
   .nav-links a{font-family:var(--font);font-weight:600;font-size:15px;color:rgba(233,242,251,.88);white-space:nowrap;transition:color .15s}
   .nav-links a:hover{color:#fff}
@@ -170,8 +169,8 @@
   .burger{display:none;background:none;border:none;cursor:pointer;padding:8px}
   .burger span{display:block;width:24px;height:2px;background:#fff;margin:5px 0;border-radius:2px;transition:.25s}
   /* Scrolled state: white header, dark text */
-  header.scrolled .logo .name{color:var(--navy)}
-  header.scrolled .logo .name small{color:var(--accent-deep)}
+  header.scrolled .logo .wordmark--dark{display:none}
+  header.scrolled .logo .wordmark--light{display:block}
   header.scrolled .nav-links a{color:var(--slate)}
   header.scrolled .nav-links a:hover{color:var(--accent-deep)}
   header.scrolled .nav-phone{color:var(--navy)}
@@ -374,7 +373,7 @@
   /* ---------- Footer ---------- */
   footer{background:#070f1c;color:#9fb0c6;padding:64px 0 30px}
   .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.08)}
-  .foot-brand .logo .name{color:#fff}
+  .foot-brand .logo .wordmark{width:205px}
   .foot-brand p{font-size:14px;margin-top:16px;max-width:290px;color:#8698af}
   .foot-col h4{color:#fff;font-family:var(--font);font-size:14px;letter-spacing:.04em;margin-bottom:16px}
   .foot-col a{display:block;font-size:14px;color:#9fb0c6;margin-bottom:11px;transition:color .15s}
@@ -402,6 +401,7 @@
   }
   @media(max-width:720px){
     section{padding:70px 0}
+    .logo .wordmark{width:154px}
     .nav-links,.nav-phone{display:none}
     .nav-cta .btn-primary{display:none}
     .burger{display:block}
@@ -424,8 +424,8 @@
 <header id="header">
   <div class="wrap nav">
     <a href="#top" class="logo" aria-label="Gestion TI Informatique — accueil">
-      <img class="mark" src="assets/brand/gestion-ti-reseau-ia.svg" alt="">
-      <span class="name">Gestion&nbsp;TI<small>Informatique</small></span>
+      <img class="wordmark wordmark--dark" src="assets/brand/gestion-ti-informatique-dark.svg" alt="Gestion TI Informatique">
+      <img class="wordmark wordmark--light" src="assets/brand/gestion-ti-informatique-light.svg" alt="Gestion TI Informatique">
     </a>
 
     <nav class="nav-links" id="navLinks">
@@ -896,8 +896,7 @@
     <div class="foot-top">
       <div class="foot-brand">
         <div class="logo">
-          <img class="mark" src="assets/brand/gestion-ti-reseau-ia.svg" alt="">
-          <span class="name">Gestion&nbsp;TI<small>Informatique</small></span>
+          <img class="wordmark wordmark--dark" src="assets/brand/gestion-ti-informatique-dark.svg" alt="Gestion TI Informatique">
         </div>
         <p>Votre partenaire de confiance en services TI gérés, cybersécurité et automatisation pour les PME du Grand Montréal et des Laurentides.</p>
       </div>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 130" role="img" aria-labelledby="title desc">
+  <title id="title">Gestion TI Informatique</title>
+  <desc id="desc">Logotype Gestion TI Informatique, version fond foncé.</desc>
+  <text x="0" y="66" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="70" font-weight="800" letter-spacing="-4">Gestion</text>
+  <text x="274" y="66" fill="#22D3EE" font-family="Arial, Helvetica, sans-serif" font-size="70" font-weight="800" letter-spacing="-4">TI</text>
+  <rect x="1" y="84" width="64" height="7" rx="3.5" fill="#22D3EE"/>
+  <text x="82" y="103" fill="#7FE6F3" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="800" letter-spacing="5">INFORMATIQUE</text>
+</svg>
