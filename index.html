@@ -61,8 +61,8 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Desservez-vous seulement les concessionnaires automobiles ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Non. Nous accompagnons les PME de tous les secteurs dans le Grand Montréal et les Laurentides. Les concessionnaires sont une spécialité pour laquelle nous avons une expertise approfondie, mais la majorité de nos services conviennent à n'importe quelle entreprise." }
+      "name": "Quels types d'entreprises desservez-vous ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Nous nous concentrons sur trois environnements : les concessionnaires automobiles, les entrepôts et la logistique, et les bureaux professionnels. Nous accompagnons des PME de ces secteurs dans le Grand Montréal et les Laurentides, et nos services conviennent aussi à d'autres entreprises." }
     },
     {
       "@type": "Question",
@@ -72,7 +72,7 @@
     {
       "@type": "Question",
       "name": "Pouvez-vous migrer notre courriel vers Microsoft 365 ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Absolument. À titre de partenaire Microsoft, nous gérons la migration complète vers Microsoft 365 (courriel, fichiers, Teams, SharePoint), la configuration sécurisée et la gestion continue de vos licences — sans temps d'arrêt pour vos équipes." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Absolument. À titre de partenaire Microsoft, nous gérons la migration complète vers Microsoft 365 (courriel, fichiers, Teams, SharePoint), la configuration sécurisée et la gestion continue de vos licences — avec un temps d'arrêt minimal pour vos équipes." }
     },
     {
       "@type": "Question",
@@ -294,11 +294,11 @@
   .ai-chip .pct{margin-left:auto;font-family:var(--font);font-weight:800;color:var(--accent-2);font-size:20px}
 
   /* ---------- Sectors ---------- */
-  .sectors-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
-  .sector{border-radius:var(--radius);padding:34px;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow-sm)}
-  .sector.smb{background:linear-gradient(180deg,#fff,var(--bg-soft))}
+  .sectors-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .sector{border-radius:var(--radius);padding:30px;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow-sm)}
+  .sector.logistics,.sector.offices{background:linear-gradient(180deg,#fff,var(--bg-soft))}
   .sector.dealer{background:radial-gradient(700px 300px at 90% 0,#12294a,#0a1628);color:#e8f1fb;border-color:transparent}
-  .sector h3{font-size:23px;margin:14px 0 12px}
+  .sector h3{font-size:21px;margin:14px 0 12px}
   .sector.dealer h3{color:#fff}
   .sector p{color:var(--slate);font-size:15.5px;margin-bottom:18px}
   .sector.dealer p{color:#b3c3d6}
@@ -308,7 +308,7 @@
   .sector li svg{flex:none;color:var(--accent);margin-top:3px}
   .sector.dealer li svg{color:var(--accent-2)}
   .sector .pill{display:inline-flex;align-items:center;gap:7px;font-family:var(--font);font-weight:700;font-size:12px;letter-spacing:.07em;text-transform:uppercase;padding:6px 13px;border-radius:100px}
-  .sector.smb .pill{color:var(--accent-deep);background:rgba(14,165,233,.1)}
+  .sector.logistics .pill,.sector.offices .pill{color:var(--accent-deep);background:rgba(14,165,233,.1)}
   .sector.dealer .pill{color:#7ee0ff;background:rgba(34,211,238,.12)}
 
   /* ---------- Process ---------- */
@@ -539,12 +539,8 @@
 <!-- ================= TRUST BAR ================= -->
 <div class="trust">
   <div class="wrap trust-inner">
-    <span class="label">Nos partenaires technologiques</span>
+    <span class="label">Notre partenaire technologique</span>
     <span class="trust-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M2 2h9.5v9.5H2zM12.5 2H22v9.5h-9.5zM2 12.5h9.5V22H2zM12.5 12.5H22V22h-9.5z"/></svg> Microsoft Partner</span>
-    <span class="trust-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M7 20h10M12 16v4"/></svg> Lenovo</span>
-    <span class="trust-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg> Fortinet</span>
-    <span class="trust-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5l-8-3Z"/></svg> Bitdefender</span>
-    <span class="trust-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z"/><path d="M8 12l3 3 5-6"/></svg> Guardz</span>
   </div>
 </div>
 
@@ -585,17 +581,9 @@
         <img src="assets/clients/residence-les-deux-aires.png" width="397" height="350" alt="Résidence Les Deux Aires">
         <span class="client-logo-name">Résidence Les Deux Aires</span>
       </a>
-      <a class="client-logo" href="https://www.soccermirabel.com/" target="_blank" rel="noopener noreferrer" aria-label="Visiter le site de Soccer Mirabel">
-        <img src="assets/clients/soccer-mirabel.png" width="1079" height="1079" alt="Soccer Mirabel — FC Challenger">
-        <span class="client-logo-name">Soccer Mirabel</span>
-      </a>
       <a class="client-logo" href="https://www.trbmw.com/" target="_blank" rel="noopener noreferrer" aria-label="Visiter le site de Trois-Rivières BMW">
         <img src="assets/clients/trois-rivieres-bmw.webp" width="600" height="315" alt="Trois-Rivières BMW et MINI">
         <span class="client-logo-name">Trois-Rivières BMW</span>
-      </a>
-      <a class="client-logo" href="https://www.voyagesbelaro.com/" target="_blank" rel="noopener noreferrer" aria-label="Visiter le site de Voyages Belaro Mirabel">
-        <img src="assets/clients/voyages-belaro-mirabel.svg" width="339" height="176" alt="Voyages Belaro Mirabel">
-        <span class="client-logo-name">Voyages Belaro Mirabel</span>
       </a>
     </div>
   </div>
@@ -673,7 +661,7 @@
         </div>
         <div class="ai-item">
           <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div>
-          <div><b>Paperasse automatisée</b><span>Factures, formulaires et saisies de données traités automatiquement, sans erreur.</span></div>
+          <div><b>Paperasse automatisée</b><span>Factures, formulaires et saisies de données traités automatiquement, avec moins d'erreurs.</span></div>
         </div>
         <div class="ai-item">
           <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg></div>
@@ -703,21 +691,10 @@
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">Pour qui</span>
-      <h2>Des PME de tous les secteurs — et une spécialité automobile</h2>
-      <p>Nous servons les petites et moyennes entreprises du Grand Montréal et des Laurentides, avec une expertise reconnue auprès des concessionnaires.</p>
+      <h2>Trois secteurs que nous connaissons de près</h2>
+      <p>Nous concentrons notre expertise là où les exigences sont les plus claires : les concessionnaires automobiles, les entrepôts et la logistique, et les bureaux professionnels. Nos services conviennent aussi à d'autres PME — parlons-en.</p>
     </div>
     <div class="sectors-grid">
-      <div class="sector smb reveal">
-        <span class="pill">Toutes les PME</span>
-        <h3>Petites et moyennes entreprises</h3>
-        <p>Bureaux professionnels, commerces, manufacturiers, services — si votre entreprise dépend de sa technologie, nous la gardons fiable, sécuritaire et à jour.</p>
-        <ul>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Support TI complet à coût prévisible</li>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Migration et gestion Microsoft&nbsp;365</li>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Cybersécurité et conformité à la Loi&nbsp;25</li>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Approvisionnement en matériel et logiciels</li>
-        </ul>
-      </div>
       <div class="sector dealer reveal">
         <span class="pill">Notre spécialité</span>
         <h3>Concessionnaires automobiles</h3>
@@ -727,6 +704,28 @@
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Réseau haute disponibilité, plancher et atelier</li>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Support prioritaire avec cibles de réponse en heures ouvrables</li>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Gestion multi-sites depuis un tableau de bord unifié</li>
+        </ul>
+      </div>
+      <div class="sector logistics reveal">
+        <span class="pill">En forte demande</span>
+        <h3>Entrepôts et logistique</h3>
+        <p>Réception, préparation de commandes, expédition : vos opérations ne peuvent pas s'arrêter. Nous gardons les systèmes qui soutiennent cette cadence fiables, même en période de pointe.</p>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Réseau et Wi-Fi couvrant entrepôt, quais et zones de travail</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Postes, lecteurs de codes-barres et imprimantes d'étiquettes</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Soutien des systèmes de gestion d'entrepôt et d'expédition</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Sauvegardes et continuité pour vos opérations critiques</li>
+        </ul>
+      </div>
+      <div class="sector offices reveal">
+        <span class="pill">Au quotidien</span>
+        <h3>Bureaux professionnels</h3>
+        <p>Cabinets, bureaux de services et équipes administratives : des environnements où les courriels, les dossiers clients et la confidentialité ne peuvent pas être fragiles.</p>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Microsoft&nbsp;365, courriel et collaboration en français</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Protection des renseignements personnels et conformité à la Loi&nbsp;25</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Gestion des accès et des départs d'employés</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Sauvegardes, reprise et soutien réactif</li>
         </ul>
       </div>
     </div>
@@ -757,7 +756,7 @@
       <span class="eyebrow">Pourquoi Gestion TI Informatique</span>
       <h2>Un partenaire local qui parle votre langue</h2>
       <p>Basés à Mirabel, nous accompagnons les PME du Grand Montréal et des Laurentides avec un service humain, en français, et une véritable expertise technique.</p>
-      <p>Nos clients ne veulent pas gérer leur informatique — ils veulent faire croître leur entreprise. Notre rôle est de faire en sorte que la technologie fonctionne en arrière-plan, sans interruption et sans surprise.</p>
+      <p>Nos clients ne veulent pas gérer leur informatique — ils veulent faire croître leur entreprise. Notre rôle est de faire en sorte que la technologie fonctionne en arrière-plan, de façon fiable et sans surprise.</p>
       <a href="#contact" class="btn btn-primary" style="margin-top:12px">Discutons de votre entreprise</a>
     </div>
     <div class="stat-grid reveal">
@@ -831,8 +830,8 @@
     </div>
     <div class="faq">
       <div class="faq-item reveal">
-        <button class="faq-q">Desservez-vous seulement les concessionnaires automobiles ?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
-        <div class="faq-a"><p>Non. Nous accompagnons les PME de tous les secteurs dans le Grand Montréal et les Laurentides. Les concessionnaires sont une spécialité pour laquelle nous avons une expertise approfondie, mais la majorité de nos services conviennent à n'importe quelle entreprise.</p></div>
+        <button class="faq-q">Quels types d'entreprises desservez-vous ?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="faq-a"><p>Nous nous concentrons sur trois environnements : les concessionnaires automobiles, les entrepôts et la logistique, et les bureaux professionnels. Nous accompagnons des PME de ces secteurs dans le Grand Montréal et les Laurentides, et nos services conviennent aussi à d'autres entreprises.</p></div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">Combien coûtent vos services gérés ?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
@@ -840,7 +839,7 @@
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">Pouvez-vous migrer notre courriel vers Microsoft&nbsp;365 ?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
-        <div class="faq-a"><p>Absolument. À titre de partenaire Microsoft, nous gérons la migration complète vers Microsoft&nbsp;365 (courriel, fichiers, Teams, SharePoint), la configuration sécurisée et la gestion continue de vos licences — sans temps d'arrêt pour vos équipes.</p></div>
+        <div class="faq-a"><p>Absolument. À titre de partenaire Microsoft, nous gérons la migration complète vers Microsoft&nbsp;365 (courriel, fichiers, Teams, SharePoint), la configuration sécurisée et la gestion continue de vos licences — avec un temps d'arrêt minimal pour vos équipes.</p></div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">Fournissez-vous aussi le matériel informatique ?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
