@@ -21,34 +21,71 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
+  "@type": ["ProfessionalService", "LocalBusiness"],
+  "@id": "https://gestionti.info/#organisation",
   "name": "Gestion TI Informatique",
-  "description": "Services TI gérés, cybersécurité, Microsoft 365 et automatisation par intelligence artificielle (agents intelligents) pour les PME du Grand Montréal et des Laurentides. Partenaire Microsoft. Spécialité concessionnaires automobiles.",
+  "alternateName": "Gestion TI",
   "url": "https://gestionti.info/",
+  "logo": "https://gestionti.info/assets/brand/gestion-ti-informatique-light.svg",
+  "description": "Services TI gérés (MSP) pour PME des Laurentides, de la Rive-Nord et du Grand Montréal : support, cybersécurité, Microsoft 365, sauvegarde, réseau et automatisation par intelligence artificielle (agents intelligents). Partenaire Microsoft. Établi à Mirabel. Spécialité concessionnaires automobiles. Service en français.",
   "telephone": "+1-514-742-6455",
   "email": "info@gestionti.info",
   "priceRange": "$",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "12074 Lévis",
+    "streetAddress": "12074 rue Lévis",
     "addressLocality": "Mirabel",
     "addressRegion": "QC",
     "postalCode": "J7J 0A5",
     "addressCountry": "CA"
   },
-  "areaServed": ["Mirabel", "Grand Montréal", "Laurentides", "Québec"],
+  "areaServed": [
+    {"@type": "City", "name": "Mirabel"},
+    {"@type": "City", "name": "Saint-Jérôme"},
+    {"@type": "City", "name": "Blainville"},
+    {"@type": "City", "name": "Sainte-Thérèse"},
+    {"@type": "City", "name": "Boisbriand"},
+    {"@type": "City", "name": "Saint-Eustache"},
+    {"@type": "City", "name": "Laval"},
+    {"@type": "AdministrativeArea", "name": "Laurentides"},
+    {"@type": "AdministrativeArea", "name": "Rive-Nord de Montréal"},
+    {"@type": "AdministrativeArea", "name": "Grand Montréal"},
+    {"@type": "AdministrativeArea", "name": "Québec"}
+  ],
+  "availableLanguage": ["fr"],
   "openingHoursSpecification": {
     "@type": "OpeningHoursSpecification",
     "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
     "opens": "08:00",
     "closes": "17:00"
   },
-  "knowsAbout": ["Services TI gérés", "Cybersécurité", "Microsoft 365", "Automatisation par IA", "Agents intelligents", "Infogérance", "Azure", "Loi 25"],
+  "founder": {"@type": "Person", "@id": "https://gestionti.info/rudy-araya.html#person", "name": "Rudy Araya", "jobTitle": "Président", "url": "https://gestionti.info/rudy-araya.html"},
+  "employee": {"@id": "https://gestionti.info/rudy-araya.html#person"},
+  "memberOf": {"@type": "Organization", "name": "Chambre de commerce et d'industrie de Mirabel", "url": "https://www.ccimirabel.com/"},
+  "award": "Microsoft Partner",
+  "knowsAbout": ["Services TI gérés", "Infogérance", "Cybersécurité", "Microsoft 365", "Azure", "Intune", "Sauvegarde et reprise", "Réseau et Wi-Fi", "Loi 25", "Automatisation par IA", "Agents intelligents", "TI pour concessionnaires automobiles", "TI pour entrepôts et logistique", "TI pour bureaux professionnels"],
+  "audience": {"@type": "BusinessAudience", "audienceType": "PME : concessionnaires automobiles, entrepôts et logistique, bureaux professionnels"},
   "makesOffer": [
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Services TI gérés" } },
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cybersécurité gérée" } },
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Microsoft 365" } },
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Automatisation et agents IA" } }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Forfaits de services TI gérés",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Forfait Bronze"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Forfait Argent"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Forfait Or"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Migration Microsoft 365", "url": "https://gestionti.info/microsoft-365-migration-quebec.html"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Cybersécurité pour PME", "url": "https://gestionti.info/cybersecurite-pme-quebec.html"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "TI pour concessionnaires automobiles", "url": "https://gestionti.info/msp-concessionnaires-automobiles.html"}}
+    ]
+  },
+  "sameAs": [
+    "https://www.linkedin.com/company/gestion-ti-informatique",
+    "https://clutch.co/profile/gestion-ti-informatique"
   ]
 }
 </script>
@@ -1022,6 +1059,7 @@
         <a href="#secteurs">Secteurs</a>
         <a href="#forfaits">Forfaits</a>
         <a href="#contact">Contact</a>
+        <a href="/faq.html">Questions fréquentes</a>
       </div>
       <div class="foot-col">
         <h4>Nous joindre</h4>
