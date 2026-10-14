@@ -1,0 +1,37 @@
+# Gestion TI Informatique
+
+> Fournisseur de services TI gérés (MSP) établi à Mirabel, Québec. On s'occupe de l'informatique des PME des Laurentides, de la Rive-Nord et du Grand Montréal : support aux utilisateurs, cybersécurité, Microsoft 365, sauvegarde, réseau et automatisation. Partenaire Microsoft. Service en français.
+
+- Entreprise : Gestion TI Informatique
+- Président : Rudy Araya
+- Adresse : 12074 rue Lévis, Mirabel (Québec) J7J 0A5, Canada
+- Téléphone : (514) 742-6455
+- Courriel : info@gestionti.info
+- Heures : lundi au vendredi, 8 h à 17 h
+- Territoire : Mirabel, Saint-Jérôme, Blainville, Sainte-Thérèse, Boisbriand, Saint-Eustache, Laval, Laurentides, Rive-Nord, Grand Montréal (sur place et à distance)
+- Secteurs : concessionnaires automobiles, entrepôts et logistique, bureaux professionnels
+- Forfaits : Bronze, Argent, Or — prix mensuel selon le nombre d'utilisateurs et de serveurs, après une évaluation gratuite
+- Langue de service : français
+
+## Services
+
+- [Services TI gérés à Mirabel](https://gestionti.info/services-ti-geres-mirabel.html): support, surveillance, mises à jour, forfaits mensuels
+- [Cybersécurité pour PME](https://gestionti.info/cybersecurite-pme-quebec.html): protection des postes, courriel, MFA, Loi 25
+- [Migration Microsoft 365](https://gestionti.info/microsoft-365-migration-quebec.html): courriel, fichiers, Teams, SharePoint, licences
+- [TI pour concessionnaires automobiles](https://gestionti.info/msp-concessionnaires-automobiles.html)
+
+## Questions fréquentes
+
+- [FAQ (français)](https://gestionti.info/faq.html)
+- [FAQ (English)](https://gestionti.info/en/faq.html)
+
+## Ressources
+
+- [Questions à poser à un fournisseur de services TI gérés](https://gestionti.info/ressources/questions-fournisseur-services-ti-geres-msp-quebec.html)
+- [Questions à poser à votre fournisseur TI après une cyberattaque](https://gestionti.info/ressources/questions-fournisseur-ti-apres-cyberattaque-ccq.html)
+- [Restreindre l'authentification par code d'appareil dans Microsoft 365](https://gestionti.info/ressources/restreindre-authentification-code-appareil-microsoft-365.html)
+
+## Contact
+
+- [Rudy Araya, président](https://gestionti.info/rudy-araya.html)
+- [Politique de confidentialité](https://gestionti.info/confidentialite.html)
