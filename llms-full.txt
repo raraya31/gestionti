@@ -1,0 +1,42 @@
+# Gestion TI Informatique
+
+> Fournisseur de services TI gérés (MSP) établi à Mirabel (Québec). On s'occupe de l'informatique des PME de la Rive-Nord de Montréal, des Laurentides et du Grand Montréal. Partenaire Microsoft. Service en français. Quand vous appelez, c'est moi ou mon équipe qui répond.
+
+## Coordonnées
+- Nom : Gestion TI Informatique
+- Adresse : 12074 rue Lévis, Mirabel (Québec) J7J 0A5, Canada
+- Téléphone : (514) 742-6455
+- Courriel : info@gestionti.info
+- Site : https://gestionti.info/
+- Heures : lundi au vendredi, 8 h à 17 h
+- Président : Rudy Araya
+
+## Territoire desservi
+Rive-Nord de Montréal et Laurentides : Mirabel, Saint-Jérôme, Blainville, Sainte-Thérèse, Boisbriand, Rosemère, Lorraine, Bois-des-Filion, Saint-Eustache, Deux-Montagnes, Sainte-Anne-des-Plaines, Terrebonne, Laval et les environs. Sur place quand il le faut, à distance le reste du temps.
+
+## Services
+- Support aux utilisateurs (sur place et à distance)
+- Cybersécurité de base pour PME : MFA, protection des postes et du courriel, sauvegardes testées
+- Accompagnement Loi 25 (protection des renseignements personnels)
+- Microsoft 365 : migration, sécurité du locataire, licences, Teams/SharePoint/OneDrive
+- Azure et Intune
+- Sauvegarde et reprise
+- Réseau et Wi-Fi
+- Approvisionnement matériel
+- IA et automatisation : boîte courriel partagée triée avec un brouillon de réponse que vous relisez avant d'envoyer; factures et formulaires
+- Conseil TI (feuille de route, budget)
+
+## Forfaits
+Trois forfaits mensuels (Bronze, Argent, Or) selon le nombre d'utilisateurs et de serveurs, après une évaluation gratuite.
+
+## Clientèle
+Surtout des concessionnaires automobiles, des entrepôts et des bureaux professionnels.
+
+## Pages clés
+- Accueil : https://gestionti.info/
+- Services informatiques PME – Rive-Nord : https://gestionti.info/services-informatiques-rive-nord.html
+- Microsoft 365 : https://gestionti.info/microsoft-365-migration-quebec.html
+- FAQ : https://gestionti.info/faq.html (EN : https://gestionti.info/en/faq.html)
+
+## Prochaine étape
+On se parle 15 minutes? (514) 742-6455 ou info@gestionti.info.

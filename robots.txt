@@ -23,11 +23,26 @@ User-agent: ClaudeBot
 Allow: /
 User-agent: Claude-SearchBot
 Allow: /
+User-agent: Claude-User
+Allow: /
 User-agent: Applebot
 Allow: /
 User-agent: Applebot-Extended
 Allow: /
+User-agent: meta-externalagent
+Allow: /
+User-agent: meta-webindexer
+Allow: /
+User-agent: MistralAI-User
+Allow: /
+User-agent: MistralAI-Index
+Allow: /
+User-agent: Bravebot
+Allow: /
+User-agent: DuckAssistBot
+Allow: /
 User-agent: CCBot
 Allow: /
+# xAI/Grok : aucun crawler documenté par xAI (sept. 2026); couvert par « User-agent: * ».
 
 Sitemap: https://gestionti.info/sitemap.xml
