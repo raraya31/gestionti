@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Gestion TI Informatique — Services TI gérés pour PME | Mirabel &amp; Grand Montréal</title>
-<meta name="description" content="Services TI gérés, cybersécurité et Microsoft 365 pour PME à Mirabel, Laurentides et Grand Montréal. Consultation gratuite avec Gestion TI Informatique." />
+<title>Services TI pour PME – Rive-Nord de Montréal et Laurentides | Gestion TI Informatique (Mirabel)</title>
+<meta name="description" content="Support TI, cybersécurité et Microsoft 365 pour les PME de la Rive-Nord et des Laurentides. Établi à Mirabel. C'est moi ou mon équipe qui répond. On se parle 15 minutes?" />
 <meta name="theme-color" content="#0a1628" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; connect-src 'self' https://formspree.io; form-action https://formspree.io; base-uri 'self'; frame-ancestors 'none'; upgrade-insecure-requests" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Gestion TI Informatique — TI de voisinage, Mirabel" />
-<meta property="og:description" content="Services TI gérés, cybersécurité et Microsoft 365 pour PME à Mirabel, Laurentides et Grand Montréal. Consultation gratuite avec Gestion TI Informatique." />
+<meta property="og:title" content="Services TI pour PME – Rive-Nord de Montréal et Laurentides | Gestion TI Informatique (Mirabel)" />
+<meta property="og:description" content="Support TI, cybersécurité et Microsoft 365 pour les PME de la Rive-Nord et des Laurentides. Établi à Mirabel. C'est moi ou mon équipe qui répond. On se parle 15 minutes?" />
 <meta property="og:locale" content="fr_CA" />
 <meta property="og:url" content="https://gestionti.info/" />
 <link rel="canonical" href="https://gestionti.info/" />
@@ -45,7 +45,13 @@
     {"@type": "City", "name": "Blainville"},
     {"@type": "City", "name": "Sainte-Thérèse"},
     {"@type": "City", "name": "Boisbriand"},
+    {"@type": "City", "name": "Rosemère"},
+    {"@type": "City", "name": "Lorraine"},
+    {"@type": "City", "name": "Bois-des-Filion"},
     {"@type": "City", "name": "Saint-Eustache"},
+    {"@type": "City", "name": "Deux-Montagnes"},
+    {"@type": "City", "name": "Sainte-Anne-des-Plaines"},
+    {"@type": "City", "name": "Terrebonne"},
     {"@type": "City", "name": "Laval"},
     {"@type": "AdministrativeArea", "name": "Laurentides"},
     {"@type": "AdministrativeArea", "name": "Rive-Nord de Montréal"},
@@ -306,7 +312,7 @@
   .guide-card .more{margin-top:16px;font-family:var(--font);font-weight:700;font-size:13.5px;color:var(--accent-deep)}
   .ressources-label{font-family:var(--font);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate-2);margin:0 0 16px}
   .ressources-block+.ressources-block{margin-top:36px}
-  .ressources-landings{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+  .ressources-landings{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:22px}
 
   /* ---------- AI band ---------- */
   .ai{
@@ -427,6 +433,17 @@
   .privacy-consent a{color:#0369a1;font-weight:800;text-underline-offset:3px}
   .form-note{font-size:12.5px;color:var(--slate-2);margin-top:12px;text-align:center}
 
+  /* ---------- Loi 25 and service area ---------- */
+  .loi25{background:var(--bg-soft)}
+  .loi25 h2,.secteurs h2{font-size:clamp(28px,4vw,42px);margin:0 0 14px}
+  .loi25 p,.secteurs p{color:var(--slate);font-size:18px;max-width:70ch}
+  .loi25 ul{margin:16px 0 0;padding-left:1.2em;color:var(--slate);max-width:70ch}
+  .loi25 li+li{margin-top:8px}
+  .loi25 p+p,.secteurs p+p{margin-top:16px}
+  .secteurs .cities{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:22px 0;padding:0}
+  .secteurs .cities li{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-weight:700;color:var(--navy);font-size:14.5px;box-shadow:var(--shadow-sm)}
+  .secteurs a{color:var(--accent-deep);font-weight:700}
+
   /* ---------- Footer ---------- */
   footer{background:#070f1c;color:#9fb0c6;padding:64px 0 30px}
   .foot-top{display:grid;grid-template-columns:1.35fr 1fr 1fr 1fr .95fr;gap:28px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.08)}
@@ -502,6 +519,7 @@
         <div class="nav-drop-menu">
           <a href="#services">Aperçu sur cette page</a>
           <a href="services-ti-geres-mirabel.html">Services TI gérés</a>
+          <a href="services-informatiques-rive-nord.html">Rive-Nord</a>
           <a href="cybersecurite-pme-quebec.html">Cybersécurité</a>
           <a href="microsoft-365-migration-quebec.html">Microsoft 365</a>
           <a href="msp-concessionnaires-automobiles.html">Concessionnaires</a>
@@ -534,7 +552,7 @@
   <div class="wrap hero-inner">
     <div>
       <span class="eyebrow">TI de voisinage · Mirabel et Laurentides</span>
-      <h1>Salut, c'est Rudy.<br><span class="grad">Je m'occupe de votre informatique.</span></h1>
+      <h1>Salut, c'est Rudy.<br><span class="grad">Je m'occupe de l'informatique des PME de la Rive-Nord.</span></h1>
       <p class="lead">Ordis, courriels, sauvegardes, sécurité. Je règle ce qui accroche et je surveille le reste pour que ça arrête de vous déranger. Vous appelez, c'est moi ou mon équipe qui répond, en français.</p>
       <div class="cta-row">
         <a href="https://outlook.office.com/bookwithme/user/9833653fd52e42ac871dd98b34d2c22d@gestionti.info/meetingtype/OPz3PT7T-EiTB3st_FznLw2?anonymous&amp;ep=plink" target="_blank" rel="noopener" class="btn btn-primary">On se parle 15 minutes
@@ -682,6 +700,18 @@
     </div>
   </div>
 </section>
+
+<!-- ================= LOI 25 ================= -->
+<section class="loi25"><div class="wrap">
+  <h2>Loi 25 : on fait le ménage ensemble</h2>
+  <p>La Loi 25 vous demande de protéger les renseignements personnels de vos clients pis de vos employés. Moi ou mon équipe, on fait le tour avec vous : où sont vos données, qui y a accès, ce qui est sauvegardé.</p>
+  <ul>
+    <li>Vos données hébergées au Québec quand c'est possible, sinon au Canada.</li>
+    <li>MFA, accès au cas par cas, sauvegardes qu'on teste pour vrai.</li>
+    <li>Une liste claire de ce qui est où, pour votre registre.</li>
+  </ul>
+  <p>On se parle 15 minutes? (514) 742-6455</p>
+</div></section>
 
 <!-- ================= AI BAND ================= -->
 <section id="ia" class="ai">
@@ -925,6 +955,12 @@
           <p>Postes, identité et sécurité autour du DMS, avec une équipe qui connaît le rythme d’une concession.</p>
           <span class="more">Voir la page →</span>
         </a>
+        <a class="card guide-card reveal" href="services-informatiques-rive-nord.html">
+          <span class="tag">Rive-Nord</span>
+          <h3>Services informatiques PME</h3>
+          <p>Support TI, cybersécurité, Microsoft 365 et sauvegarde pour les PME de la Rive-Nord et des Laurentides.</p>
+          <span class="more">Voir la page →</span>
+        </a>
       </div>
     </div>
     <div class="ressources-block">
@@ -1029,6 +1065,14 @@
   </div>
 </section>
 
+<!-- ================= SECTEURS DESSERVIS ================= -->
+<section class="secteurs" id="secteurs-desservis"><div class="wrap">
+  <h2>Secteurs desservis</h2>
+  <p>Le bureau est à Mirabel. On se déplace partout sur la Rive-Nord pis dans les Laurentides, et on règle le reste à distance.</p>
+  <ul class="cities"><li>Mirabel</li><li>Saint-Jérôme</li><li>Blainville</li><li>Sainte-Thérèse</li><li>Boisbriand</li><li>Rosemère</li><li>Lorraine</li><li>Bois-des-Filion</li><li>Saint-Eustache</li><li>Deux-Montagnes</li><li>Sainte-Anne-des-Plaines</li><li>Terrebonne</li><li>Laval</li></ul>
+  <p><a href="/services-informatiques-rive-nord.html">Services informatiques PME – Rive-Nord</a> · On se parle 15 minutes? (514) 742-6455</p>
+</div></section>
+
 <!-- ================= FOOTER ================= -->
 <footer>
   <div class="wrap">
@@ -1042,6 +1086,7 @@
       <div class="foot-col">
         <h4>Services</h4>
         <a href="services-ti-geres-mirabel.html">Services TI gérés</a>
+        <a href="services-informatiques-rive-nord.html">Rive-Nord</a>
         <a href="cybersecurite-pme-quebec.html">Cybersécurité</a>
         <a href="microsoft-365-migration-quebec.html">Microsoft 365</a>
         <a href="msp-concessionnaires-automobiles.html">Concessionnaires</a>
