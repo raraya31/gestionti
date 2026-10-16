@@ -1,6 +1,8 @@
-# Gestion TI Informatique — tout le site est public.
+# Gestion TI Informatique. Le site public est permis.
+# _drafts/ est déjà ignoré par Jekyll (dossier qui commence par _). Filet si le site est servi sans Jekyll.
 User-agent: *
 Allow: /
+Disallow: /_drafts/
 
 # Moteurs de recherche et assistants IA (explicitement permis)
 User-agent: Googlebot
