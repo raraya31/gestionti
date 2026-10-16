@@ -1,14 +1,14 @@
 # Gestion TI Informatique
 
-> Fournisseur de services TI gérés (MSP) établi à Mirabel, Québec. On s'occupe de l'informatique des PME des Laurentides, de la Rive-Nord et du Grand Montréal : support aux utilisateurs, cybersécurité, Microsoft 365, sauvegarde, réseau et automatisation. Partenaire Microsoft. Service en français.
+> Fournisseur de services TI gérés (MSP) établi à Mirabel, Québec. On s'occupe de l'informatique des PME des Laurentides et de la Rive-Nord : support aux utilisateurs, cybersécurité, Microsoft 365, sauvegarde, réseau et automatisation. Partenaire Microsoft. Service en français.
 
 - Entreprise : Gestion TI Informatique
 - Président : Rudy Araya
-- Adresse : 12074 rue Lévis, Mirabel (Québec) J7J 0A5, Canada
+- Adresse : Mirabel (Québec), Canada
 - Téléphone : (514) 742-6455
 - Courriel : info@gestionti.info
 - Heures : lundi au vendredi, 8 h à 17 h
-- Territoire : Mirabel, Saint-Jérôme, Blainville, Sainte-Thérèse, Boisbriand, Saint-Eustache, Laval, Laurentides, Rive-Nord, Grand Montréal (sur place et à distance)
+- Territoire : Mirabel, Saint-Jérôme, Blainville, Sainte-Thérèse, Boisbriand, Saint-Eustache, Laval, Laurentides, Rive-Nord (sur place et à distance)
 - Secteurs : concessionnaires automobiles, entrepôts et logistique, bureaux professionnels
 - Forfaits : Bronze, Argent, Or — prix mensuel selon le nombre d'utilisateurs et de serveurs, après une évaluation gratuite
 - Langue de service : français
