@@ -12,7 +12,7 @@
 - Président : Rudy Araya
 
 ## Territoire desservi
-Rive-Nord de Montréal et Laurentides : Mirabel, Saint-Jérôme, Blainville, Sainte-Thérèse, Boisbriand, Rosemère, Lorraine, Bois-des-Filion, Saint-Eustache, Deux-Montagnes, Sainte-Anne-des-Plaines, Terrebonne, Laval et les environs. Sur place quand il le faut, à distance le reste du temps.
+Mirabel, Saint-Eustache, Sainte-Thérèse, Blainville, plus les Laurentides et la Rive-Nord. Sur place quand il le faut, à distance le reste du temps.
 
 ## Services
 - Support aux utilisateurs (sur place et à distance)
@@ -30,7 +30,7 @@ Rive-Nord de Montréal et Laurentides : Mirabel, Saint-Jérôme, Blainville, Sai
 Trois forfaits mensuels (Bronze, Argent, Or) selon le nombre d'utilisateurs et de serveurs, après une évaluation gratuite.
 
 ## Clientèle
-Surtout des concessionnaires automobiles, des entrepôts et des bureaux professionnels.
+Entreprises seulement (B2B). Pas de dépannage pour les particuliers. Pas de sites web. Surtout des concessionnaires automobiles, des entrepôts et des bureaux professionnels.
 
 ## Pages clés
 - Accueil : https://gestionti.info/
