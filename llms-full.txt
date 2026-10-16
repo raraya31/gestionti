@@ -1,10 +1,10 @@
 # Gestion TI Informatique
 
-> Fournisseur de services TI gérés (MSP) établi à Mirabel (Québec). On s'occupe de l'informatique des PME de la Rive-Nord de Montréal, des Laurentides et du Grand Montréal. Partenaire Microsoft. Service en français. Quand vous appelez, c'est moi ou mon équipe qui répond.
+> Fournisseur de services TI gérés (MSP) établi à Mirabel (Québec). On s'occupe de l'informatique des PME de la Rive-Nord de Montréal et des Laurentides. Partenaire Microsoft. Service en français. Quand vous appelez, c'est moi ou mon équipe qui répond.
 
 ## Coordonnées
 - Nom : Gestion TI Informatique
-- Adresse : 12074 rue Lévis, Mirabel (Québec) J7J 0A5, Canada
+- Adresse : Mirabel (Québec), Canada
 - Téléphone : (514) 742-6455
 - Courriel : info@gestionti.info
 - Site : https://gestionti.info/
