@@ -20,6 +20,7 @@
 - [Services informatiques PME – Rive-Nord](https://gestionti.info/services-informatiques-rive-nord.html): support TI, cybersécurité, Microsoft 365 et sauvegarde pour les PME de la Rive-Nord et des Laurentides
 - [Cybersécurité pour PME](https://gestionti.info/cybersecurite-pme-quebec.html): protection des postes, courriel, MFA, Loi 25
 - [Migration Microsoft 365](https://gestionti.info/microsoft-365-migration-quebec.html): courriel, fichiers, Teams, SharePoint, licences
+- [Bilan Microsoft 365](https://gestionti.info/bilan-microsoft-365.html): bilan à prix fixe (495 $) en lecture seule, licences inutilisées, MFA, SPF/DKIM/DMARC, rapport d'une page
 - [TI pour concessionnaires automobiles](https://gestionti.info/msp-concessionnaires-automobiles.html)
 
 ## Questions fréquentes
