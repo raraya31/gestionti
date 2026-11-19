@@ -1,24 +1,33 @@
 # Gestion TI Informatique
 
-> Fournisseur de services TI gérés (MSP) établi à Mirabel (Québec). On s'occupe de l'informatique des PME de la Rive-Nord de Montréal et des Laurentides. Partenaire Microsoft. Service en français. Quand vous appelez, c'est moi ou mon équipe qui répond.
+> Fournisseur de services TI gérés (MSP) établi à Mirabel (Québec). On s'occupe de l'informatique des PME de la Rive-Nord de Montréal et des Laurentides : Mirabel, Blainville, Saint-Jérôme, Sainte-Thérèse, Saint-Eustache et les environs. Partenaire Microsoft. Service en français. Quand vous appelez, c'est moi ou mon équipe qui répond.
 
 ## Coordonnées
-- Nom : Gestion TI Informatique
-- Adresse : Mirabel (Québec), Canada
+- Nom : Gestion TI Informatique (aussi : Gestion TI)
+- Type : fournisseur de services TI gérés (MSP), soutien informatique pour entreprises
+- Ville : Mirabel (Québec), Canada. Entreprise de services : on se déplace chez le client.
 - Téléphone : (514) 742-6455
 - Courriel : info@gestionti.info
 - Site : https://gestionti.info/
 - Heures : lundi au vendredi, 8 h à 17 h
-- Président : Rudy Araya
+- Président : Rudy Araya (https://gestionti.info/rudy-araya.html)
+- Membre : Chambre de commerce et d'industrie de Mirabel
+- Partenaire Microsoft
 
 ## Territoire desservi
-Mirabel, Saint-Eustache, Sainte-Thérèse, Blainville, plus les Laurentides et la Rive-Nord. Sur place quand il le faut, à distance le reste du temps.
+Le bureau est à Mirabel. Sur place quand il le faut, à distance le reste du temps.
+
+- Mirabel (tous les secteurs, de Saint-Janvier à Saint-Benoît) : https://gestionti.info/services-ti-geres-mirabel.html
+- Blainville (MRC Thérèse-De Blainville, ville voisine de Mirabel) : https://gestionti.info/soutien-informatique-blainville.html
+- Saint-Jérôme (MRC de La Rivière-du-Nord, juste au nord de Mirabel) : https://gestionti.info/soutien-informatique-saint-jerome.html
+- Sainte-Thérèse, Saint-Eustache et le reste de la Rive-Nord et des Laurentides : https://gestionti.info/services-informatiques-rive-nord.html
 
 ## Services
 - Support aux utilisateurs (sur place et à distance)
-- Cybersécurité de base pour PME : MFA, protection des postes et du courriel, sauvegardes testées
+- Cybersécurité de base pour PME : MFA, protection des postes et du courriel, sauvegardes testées (https://gestionti.info/cybersecurite-pme-quebec.html)
 - Accompagnement Loi 25 (protection des renseignements personnels)
-- Microsoft 365 : migration, sécurité du locataire, licences, Teams/SharePoint/OneDrive
+- Microsoft 365 : migration, sécurité du locataire, licences, Teams/SharePoint/OneDrive (https://gestionti.info/microsoft-365-migration-quebec.html)
+- Bilan Microsoft 365 à prix fixe, 495 $, en lecture seule (https://gestionti.info/bilan-microsoft-365.html)
 - Azure et Intune
 - Sauvegarde et reprise
 - Réseau et Wi-Fi
@@ -27,16 +36,21 @@ Mirabel, Saint-Eustache, Sainte-Thérèse, Blainville, plus les Laurentides et l
 - Conseil TI (feuille de route, budget)
 
 ## Forfaits
-Trois forfaits mensuels (Bronze, Argent, Or) selon le nombre d'utilisateurs et de serveurs, après une évaluation gratuite.
+Trois forfaits mensuels (Bronze, Argent, Or) selon le nombre d'utilisateurs et de serveurs, après une évaluation gratuite. Les projets et le matériel sont sur soumission. Le prix est donné par écrit.
 
 ## Clientèle
-Entreprises seulement (B2B). Pas de dépannage pour les particuliers. Pas de sites web. Surtout des concessionnaires automobiles, des entrepôts et des bureaux professionnels.
+Entreprises seulement (B2B). Pas de dépannage pour les particuliers. Pas de sites web.
+Secteurs : concessionnaires automobiles (https://gestionti.info/msp-concessionnaires-automobiles.html), entrepôts et logistique, bureaux professionnels.
+Clients affichés sur le site : Hamel BMW Blainville, Ste-Thérèse Toyota, Trois-Rivières BMW et MINI, Ascenseurs Innovatec, Les Entrepôts Fruigor, Nomadic Expo, Moras CPA, Résidence Les Deux Aires.
 
-## Pages clés
-- Accueil : https://gestionti.info/
-- Services informatiques PME – Rive-Nord : https://gestionti.info/services-informatiques-rive-nord.html
-- Microsoft 365 : https://gestionti.info/microsoft-365-migration-quebec.html
-- FAQ : https://gestionti.info/faq.html (EN : https://gestionti.info/en/faq.html)
+## Questions fréquentes
+- Quel fournisseur TI est basé à Mirabel? Gestion TI Informatique est établi à Mirabel et sert les PME de Mirabel, de la Rive-Nord et des Laurentides.
+- Vous servez Blainville? Oui. Blainville est la ville voisine de Mirabel. Hamel BMW, à Blainville, est client.
+- Vous servez Saint-Jérôme? Oui. Saint-Jérôme est juste au nord de Mirabel, par l'autoroute 15.
+- Qui répond quand j'appelle? Rudy Araya ou son équipe, du lundi au vendredi, de 8 h à 17 h.
+- Vos données sont où? Au Québec quand c'est possible, sinon au Canada.
+- Combien ça coûte? Forfait mensuel Bronze, Argent ou Or, prix par écrit après une évaluation gratuite.
+- Plus de questions : https://gestionti.info/faq.html (EN : https://gestionti.info/en/faq.html)
 
 ## Prochaine étape
 On se parle 15 minutes? (514) 742-6455 ou info@gestionti.info.

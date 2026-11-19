@@ -8,7 +8,7 @@
 - Téléphone : (514) 742-6455
 - Courriel : info@gestionti.info
 - Heures : lundi au vendredi, 8 h à 17 h
-- Territoire : Mirabel, Saint-Eustache, Sainte-Thérèse, Blainville, Laurentides et Rive-Nord (sur place et à distance)
+- Territoire : Mirabel, Saint-Eustache, Sainte-Thérèse, Blainville, Saint-Jérôme, Laurentides et Rive-Nord (sur place et à distance)
 - Clientèle : entreprises seulement (B2B). Pas de dépannage pour les particuliers. Pas de sites web.
 - Secteurs : concessionnaires automobiles, entrepôts et logistique, bureaux professionnels
 - Forfaits : Bronze, Argent, Or. Prix mensuel sur soumission, selon le nombre d'utilisateurs et de serveurs, après une évaluation gratuite
@@ -17,6 +17,8 @@
 ## Services
 
 - [Services TI gérés à Mirabel](https://gestionti.info/services-ti-geres-mirabel.html): support, surveillance, mises à jour, forfaits mensuels
+- [Soutien informatique à Blainville](https://gestionti.info/soutien-informatique-blainville.html): PME de Blainville, la ville voisine de Mirabel; sur place ou à distance
+- [Soutien informatique à Saint-Jérôme](https://gestionti.info/soutien-informatique-saint-jerome.html): PME de Saint-Jérôme et du corridor de la 15; sur place ou à distance
 - [Services informatiques PME – Rive-Nord](https://gestionti.info/services-informatiques-rive-nord.html): support TI, cybersécurité, Microsoft 365 et sauvegarde pour les PME de la Rive-Nord et des Laurentides
 - [Cybersécurité pour PME](https://gestionti.info/cybersecurite-pme-quebec.html): protection des postes, courriel, MFA, Loi 25
 - [Migration Microsoft 365](https://gestionti.info/microsoft-365-migration-quebec.html): courriel, fichiers, Teams, SharePoint, licences
