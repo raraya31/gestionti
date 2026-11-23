@@ -1,0 +1,14 @@
+# GitHub Pages builds this repository with Jekyll. A custom exclude list
+# replaces Jekyll 3.9's defaults, so those defaults are repeated here.
+# `cloudflare/` is the MTA-STS Worker source. It must not be published on
+# gestionti.info; the policy is served from mta-sts.gestionti.info instead.
+exclude:
+  - cloudflare
+  - scripts
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/

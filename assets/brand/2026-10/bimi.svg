@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny-ps" viewBox="0 0 512 512" width="512" height="512">
+  <title>Gestion TI</title>
+  <desc>Marque Gestion TI : monogramme TI cyan sur fond marine.</desc>
+  <rect width="512" height="512" fill="#0A1628"/>
+  <path fill="#22D3EE" d="M179 142H333V290H303V166H257V290H227V166H179Z"/>
+  <rect x="124" y="342" width="264" height="28" rx="14" ry="14" fill="#22D3EE"/>
+</svg>

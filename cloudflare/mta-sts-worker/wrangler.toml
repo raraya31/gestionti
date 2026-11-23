@@ -1,0 +1,15 @@
+# Wrangler template for the gestionti.info MTA-STS worker.
+# No account_id, zone_id, or secrets belong in this file.
+# Dashboard deploy does not need Wrangler; see README.md.
+
+name = "gestionti-mta-sts"
+main = "index.js"
+compatibility_date = "2026-11-23"
+
+# Do not also publish a *.workers.dev hostname.
+workers_dev = false
+
+# Requires mta-sts.gestionti.info to be proxied (orange cloud) in the zone.
+[[routes]]
+pattern = "mta-sts.gestionti.info/*"
+zone_name = "gestionti.info"
